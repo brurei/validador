@@ -1,0 +1,281 @@
+{
+  "name": "Det. Nota Débito APS-Petrobras",
+  "description": "Layout para arquivo de detalhe nota débito APS-Petrobras",
+  "program": "DET_NOTA_DEBITO",
+  "record_size": 170,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 05=Header, 10=Detalhe, 15=Trailer",
+      "tipo_registro": null
+    },
+
+    "_HEADER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO HEADER (tipo 05) ---",
+      "tipo_registro": null
+    },
+    "HEA1_WS_HDR_REG": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Registro Header: 05",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_REG_R_REDEFINES": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Redefines WS-HDR-REG",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_TP_REG": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo registro header",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_NOME_ITF": {
+      "pos_inicial": 3,
+      "tamanho": 40,
+      "description": "Nome interface",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_EMPRESA": {
+      "pos_inicial": 43,
+      "tamanho": 4,
+      "description": "Empresa",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_ORGAO": {
+      "pos_inicial": 47,
+      "tamanho": 10,
+      "description": "Órgão",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_SIS_ORIG": {
+      "pos_inicial": 57,
+      "tamanho": 10,
+      "description": "Sistema origem",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_SIS_DEST": {
+      "pos_inicial": 67,
+      "tamanho": 10,
+      "description": "Sistema destino",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_DT_INI": {
+      "pos_inicial": 77,
+      "tamanho": 8,
+      "description": "Data início",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_HR_INI": {
+      "pos_inicial": 85,
+      "tamanho": 6,
+      "description": "Hora início",
+      "tipo_registro": "05"
+    },
+    "HEA1_WS_HDR_DT_CITE": {
+      "pos_inicial": 91,
+      "tamanho": 11,
+      "description": "Data cite",
+      "tipo_registro": "05"
+    },
+
+    "_DETALHE_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO DETALHE (tipo 10) ---",
+      "tipo_registro": null
+    },
+    "DET1_WS_DET_REG": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Registro Detalhe: 10",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_REG_R_REDEFINES": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Redefines WS-DET-REG",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_TP_REG": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo registro detalhe",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_NRO_SEQ": {
+      "pos_inicial": 3,
+      "tamanho": 5,
+      "description": "Número sequencial",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_EMPRESA": {
+      "pos_inicial": 8,
+      "tamanho": 4,
+      "description": "Empresa",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_COD_CONTA": {
+      "pos_inicial": 12,
+      "tamanho": 2,
+      "description": "Código conta",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_TIPO_LANCA": {
+      "pos_inicial": 14,
+      "tamanho": 1,
+      "description": "Tipo lançamento",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_MONTANTE": {
+      "pos_inicial": 15,
+      "tamanho": 13,
+      "description": "Montante",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_MONTANTE_R_REDEFINES": {
+      "pos_inicial": 15,
+      "tamanho": 13,
+      "description": "Redefines WS-DET-MONTANTE",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_MONTANTE_I": {
+      "pos_inicial": 15,
+      "tamanho": 11,
+      "description": "Montante inteiro",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_MONTANTE_VIRGULA": {
+      "pos_inicial": 26,
+      "tamanho": 1,
+      "description": "Vírgula montante",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_MONTANTE_F2": {
+      "pos_inicial": 27,
+      "tamanho": 2,
+      "description": "Montante fração",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_CENTRO_CUSTO": {
+      "pos_inicial": 28,
+      "tamanho": 10,
+      "description": "Centro custo",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_ATRIBUICAO": {
+      "pos_inicial": 38,
+      "tamanho": 12,
+      "description": "Atribuição",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_GRPA_CD_ORG_PAG": {
+      "pos_inicial": 50,
+      "tamanho": 4,
+      "description": "Código órgão pagamento",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_QUINZENA": {
+      "pos_inicial": 54,
+      "tamanho": 2,
+      "description": "Quinzena",
+      "tipo_registro": "10"
+    },
+    "DET1_WS_DET_FILLER": {
+      "pos_inicial": 56,
+      "tamanho": 114,
+      "description": "Filler",
+      "tipo_registro": "10"
+    },
+
+    "_TRAILER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO TRAILER (tipo 15) ---",
+      "tipo_registro": null
+    },
+    "TRA1_WS_TRL_REG": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Registro Trailer: 15",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_REG_R_REDEFINES": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Redefines WS-TRL-REG",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_TP_REG": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo registro trailer",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_DT_TERMINO": {
+      "pos_inicial": 3,
+      "tamanho": 8,
+      "description": "Data término",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_HR_TERMINO": {
+      "pos_inicial": 11,
+      "tamanho": 6,
+      "description": "Hora término",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_TOT_REGS_A": {
+      "pos_inicial": 17,
+      "tamanho": 5,
+      "description": "Total registros A",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_TOT_REGS_B": {
+      "pos_inicial": 22,
+      "tamanho": 5,
+      "description": "Total registros B",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_TOT_VALOR": {
+      "pos_inicial": 27,
+      "tamanho": 15,
+      "description": "Total valor",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_TOT_VALOR_R_REDEFINES": {
+      "pos_inicial": 27,
+      "tamanho": 15,
+      "description": "Redefines WS-TRL-TOT-VALOR",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_TOT_VALOR_I": {
+      "pos_inicial": 27,
+      "tamanho": 13,
+      "description": "Total valor inteiro",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_TOT_VALOR_VIRGULA": {
+      "pos_inicial": 40,
+      "tamanho": 1,
+      "description": "Vírgula total valor",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_TOT_VALOR_F2": {
+      "pos_inicial": 41,
+      "tamanho": 2,
+      "description": "Total valor fração",
+      "tipo_registro": "15"
+    },
+    "TRA1_WS_TRL_FILLER": {
+      "pos_inicial": 42,
+      "tamanho": 129,
+      "description": "Filler",
+      "tipo_registro": "15"
+    }
+  }
+}

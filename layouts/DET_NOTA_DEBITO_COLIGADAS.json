@@ -1,0 +1,377 @@
+{
+  "name": "Det. Nota Débito Coligadas",
+  "description": "Layout para arquivo de detalhe nota débito Coligadas",
+  "program": "DET_NOTA_DEBITO_COLIGADAS",
+  "record_size": 168,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 05=Header, 05=Detalhe, 05=Trailer",
+      "tipo_registro": null
+    },
+
+    "_HEADER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO HEADER (tipo 05) ---",
+      "tipo_registro": null
+    },
+    "HEA1_FILLER1": {
+      "pos_inicial": 1,
+      "tamanho": 8,
+      "description": "Filler: Value Empresa",
+      "tipo_registro": "05"
+    },
+    "HEA1_FILLER2": {
+      "pos_inicial": 9,
+      "tamanho": 1,
+      "description": "Filler: Value 1",
+      "tipo_registro": "05"
+    },
+    "HEA1_EMPRESA_H": {
+      "pos_inicial": 10,
+      "tamanho": 2,
+      "description": "Empresa: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "HEA1_FILLER3": {
+      "pos_inicial": 12,
+      "tamanho": 3,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "HEA1_EMPRESA_DEFT_H": {
+      "pos_inicial": 15,
+      "tamanho": 30,
+      "description": "Empresa Default: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "HEA1_FILLER4": {
+      "pos_inicial": 45,
+      "tamanho": 15,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "HEA1_FILLER5": {
+      "pos_inicial": 60,
+      "tamanho": 2,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "HEA1_QUINZENA_H": {
+      "pos_inicial": 62,
+      "tamanho": 2,
+      "description": "Quinzena: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "HEA1_FILLER6": {
+      "pos_inicial": 64,
+      "tamanho": 13,
+      "description": "Filler: Value Quinzena E",
+      "tipo_registro": "05"
+    },
+    "HEA1_MES_H": {
+      "pos_inicial": 77,
+      "tamanho": 2,
+      "description": "Mês: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "HEA1_FILLER7": {
+      "pos_inicial": 79,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "HEA1_ANO_H": {
+      "pos_inicial": 80,
+      "tamanho": 4,
+      "description": "Ano: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "HEA1_FILLER8": {
+      "pos_inicial": 84,
+      "tamanho": 3,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "HEA1_FILLER9": {
+      "pos_inicial": 87,
+      "tamanho": 4,
+      "description": "Filler: Value CBI",
+      "tipo_registro": "05"
+    },
+    "HEA1_CBI_H": {
+      "pos_inicial": 91,
+      "tamanho": 3,
+      "description": "CBI: Value Spaces",
+      "tipo_registro": "05"
+    },
+
+    "_DETALHE_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO DETALHE (tipo 05) ---",
+      "tipo_registro": null
+    },
+    "DET1_MATRICULA_SAI": {
+      "pos_inicial": 1,
+      "tamanho": 8,
+      "description": "Matrícula SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER1": {
+      "pos_inicial": 9,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_NOME_TITU_SAI": {
+      "pos_inicial": 10,
+      "tamanho": 50,
+      "description": "Nome titular SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER2": {
+      "pos_inicial": 60,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_NR_BENE_SAI": {
+      "pos_inicial": 61,
+      "tamanho": 2,
+      "description": "Número beneficiário SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER3": {
+      "pos_inicial": 63,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_NOME_BENE_SAI": {
+      "pos_inicial": 64,
+      "tamanho": 50,
+      "description": "Nome beneficiário SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER4": {
+      "pos_inicial": 114,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_SERIE_DOCU_SAI": {
+      "pos_inicial": 115,
+      "tamanho": 1,
+      "description": "Série documento SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER5": {
+      "pos_inicial": 116,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_DT_REALIZA_SAI": {
+      "pos_inicial": 117,
+      "tamanho": 10,
+      "description": "Data realização SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER6": {
+      "pos_inicial": 127,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_CREDENC_SAI": {
+      "pos_inicial": 128,
+      "tamanho": 14,
+      "description": "Credenciado SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER7": {
+      "pos_inicial": 142,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_NM_CREDENC_SAI": {
+      "pos_inicial": 143,
+      "tamanho": 50,
+      "description": "Nome credenciado SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER8": {
+      "pos_inicial": 193,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_DESEMB_EMP_SAI": {
+      "pos_inicial": 194,
+      "tamanho": 18,
+      "description": "Desembolso empresa SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER9": {
+      "pos_inicial": 212,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_DESEMB_BENEF_SAI": {
+      "pos_inicial": 213,
+      "tamanho": 18,
+      "description": "Desembolso beneficiário SAI",
+      "tipo_registro": "05"
+    },
+    "DET1_FILLER10": {
+      "pos_inicial": 231,
+      "tamanho": 1,
+      "description": "Filler",
+      "tipo_registro": "05"
+    },
+    "DET1_VALOR_CALC_SAI": {
+      "pos_inicial": 232,
+      "tamanho": 18,
+      "description": "Valor calculado SAI",
+      "tipo_registro": "05"
+    },
+
+    "_TRAILER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO TRAILER (tipo 05) ---",
+      "tipo_registro": null
+    },
+    "TRA1_TOTAIS_TOT": {
+      "pos_inicial": 1,
+      "tamanho": 8,
+      "description": "Totais: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER1": {
+      "pos_inicial": 9,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER2": {
+      "pos_inicial": 10,
+      "tamanho": 50,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER3": {
+      "pos_inicial": 60,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER4": {
+      "pos_inicial": 61,
+      "tamanho": 2,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER5": {
+      "pos_inicial": 63,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER6": {
+      "pos_inicial": 64,
+      "tamanho": 50,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER7": {
+      "pos_inicial": 114,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER8": {
+      "pos_inicial": 115,
+      "tamanho": 1,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER9": {
+      "pos_inicial": 116,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER10": {
+      "pos_inicial": 117,
+      "tamanho": 10,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER11": {
+      "pos_inicial": 127,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER12": {
+      "pos_inicial": 128,
+      "tamanho": 14,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER13": {
+      "pos_inicial": 142,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER14": {
+      "pos_inicial": 143,
+      "tamanho": 50,
+      "description": "Filler: Value Spaces",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER15": {
+      "pos_inicial": 193,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "TRA1_DESEMB_EMP_TOT": {
+      "pos_inicial": 194,
+      "tamanho": 18,
+      "description": "Desembolso empresa total",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER16": {
+      "pos_inicial": 212,
+      "tamanho": 1,
+      "description": "Filler: Value 1",
+      "tipo_registro": "05"
+    },
+    "TRA1_DESEMB_BENEF_TOT": {
+      "pos_inicial": 213,
+      "tamanho": 18,
+      "description": "Desembolso beneficiário total",
+      "tipo_registro": "05"
+    },
+    "TRA1_FILLER17": {
+      "pos_inicial": 231,
+      "tamanho": 1,
+      "description": "Filler: Value 2",
+      "tipo_registro": "05"
+    },
+    "TRA1_VALOR_CALC_TOT": {
+      "pos_inicial": 232,
+      "tamanho": 18,
+      "description": "Valor calculado total",
+      "tipo_registro": "05"
+    }
+  }
+}

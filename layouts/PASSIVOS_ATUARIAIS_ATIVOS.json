@@ -1,0 +1,111 @@
+{
+  "name": "Passivos Atuariais - Ativos",
+  "description": "Layout para arquivo de passivos atuariais - participantes ativos (formato posicional)",
+  "program": "PASSIVOS_ATUARIAIS_ATIVOS",
+  "record_size": 300,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro",
+      "tipo_registro": null
+    },
+
+    "_ATIVOS_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DE PARTICIPANTES ATIVOS ---",
+      "tipo_registro": null
+    },
+    "MATRICULA": {
+      "pos_inicial": 1,
+      "tamanho": 12,
+      "description": "Matrícula do participante ativo",
+      "tipo_registro": "01"
+    },
+    "CPF": {
+      "pos_inicial": 13,
+      "tamanho": 11,
+      "description": "CPF do participante",
+      "tipo_registro": "01"
+    },
+    "NOME": {
+      "pos_inicial": 24,
+      "tamanho": 50,
+      "description": "Nome do participante",
+      "tipo_registro": "01"
+    },
+    "DATA_NASCIMENTO": {
+      "pos_inicial": 74,
+      "tamanho": 8,
+      "description": "Data nascimento DDMMAAAA",
+      "tipo_registro": "01"
+    },
+    "SEXO": {
+      "pos_inicial": 82,
+      "tamanho": 1,
+      "description": "Sexo: M/F",
+      "tipo_registro": "01"
+    },
+    "DATA_ADMISSAO": {
+      "pos_inicial": 83,
+      "tamanho": 8,
+      "description": "Data admissão DDMMAAAA",
+      "tipo_registro": "01"
+    },
+    "SALARIO_ATUAL": {
+      "pos_inicial": 91,
+      "tamanho": 15,
+      "description": "Salário atual (com 2 decimais)",
+      "tipo_registro": "01"
+    },
+    "FUNCAO": {
+      "pos_inicial": 106,
+      "tamanho": 30,
+      "description": "Função/Cargo",
+      "tipo_registro": "01"
+    },
+    "TEMPO_SERVICO_ANOS": {
+      "pos_inicial": 136,
+      "tamanho": 5,
+      "description": "Tempo serviço em anos",
+      "tipo_registro": "01"
+    },
+    "TEMPO_SERVICO_MESES": {
+      "pos_inicial": 141,
+      "tamanho": 2,
+      "description": "Tempo serviço em meses",
+      "tipo_registro": "01"
+    },
+    "PROVISAO_MATEMATICA": {
+      "pos_inicial": 143,
+      "tamanho": 18,
+      "description": "Provisão matemática (com 2 decimais)",
+      "tipo_registro": "01"
+    },
+    "CONTRIBUICAO_MENSAL": {
+      "pos_inicial": 161,
+      "tamanho": 15,
+      "description": "Contribuição mensal (com 2 decimais)",
+      "tipo_registro": "01"
+    },
+    "CODIGO_PLANO": {
+      "pos_inicial": 176,
+      "tamanho": 10,
+      "description": "Código do plano",
+      "tipo_registro": "01"
+    },
+    "SITUACAO": {
+      "pos_inicial": 186,
+      "tamanho": 1,
+      "description": "Situação: A=Ativo, L=Licenciado",
+      "tipo_registro": "01"
+    },
+    "FILLER": {
+      "pos_inicial": 187,
+      "tamanho": 114,
+      "description": "Filler: espaços",
+      "tipo_registro": "01"
+    }
+  }
+}

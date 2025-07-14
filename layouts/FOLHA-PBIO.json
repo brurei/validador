@@ -1,0 +1,38 @@
+{
+  "name": "Folha PBIO - Empresa 11",
+  "description": "Layout para arquivo de folha PBIO (38 posições, apenas detalhes)",
+  "program": "P081074",
+  "record_size": 38,
+  "fields": {
+    "MATRIC_DET2": {
+      "pos_inicial": 1,
+      "tamanho": 8,
+      "description": "Matrícula do beneficiário igual à do SAM (8 posições)"
+    },
+    "CODIGO_DET2": {
+      "pos_inicial": 9,
+      "tamanho": 4,
+      "description": "Rubrica da folha PBIO (coluna COPF_CD_PAGAMENTO da HILB, conforme tabela PES.CONV_CODIGO_PAG)"
+    },
+    "SINAL_DET2": {
+      "pos_inicial": 13,
+      "tamanho": 1,
+      "description": "Sinal: + ou -. Se TIPC_CD_CODPAG entre '0' e '4' o sinal é '+' (crédito). Senão é '-' (débito)"
+    },
+    "VALOR_DET2": {
+      "pos_inicial": 14,
+      "tamanho": 13,
+      "description": "Valor com 10 inteiros, vírgula, e dois decimais em formato CHAR, a partir do FIFB_VL_PAGAMENTO da Ficha Financeira (FIFB). Formato: 9(10),99"
+    },
+    "DTINIC_DET2": {
+      "pos_inicial": 27,
+      "tamanho": 10,
+      "description": "Data do último dia do mês de competência. Formato: DD.MM.AAAA"
+    },
+    "COD_RET_DET2": {
+      "pos_inicial": 37,
+      "tamanho": 2,
+      "description": "Código retorno: fixo 00 (zeros)"
+    }
+  }
+}

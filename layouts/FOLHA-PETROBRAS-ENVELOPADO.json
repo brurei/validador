@@ -1,0 +1,179 @@
+{
+  "name": "Folha Petrobras Envelopado",
+  "description": "Layout para arquivo de folha Petrobras envelopado (240 posições)",
+  "program": "P0810U2",
+  "record_size": 240,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 1,
+      "description": "Tipo do registro: C=Header, 0=Detalhe, R=Trailer",
+      "tipo_registro": null
+    },
+
+    "_HEADER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO HEADER (tipo C) ---",
+      "tipo_registro": null
+    },
+    "HEA1_INTERFACE": {
+      "pos_inicial": 1,
+      "tamanho": 20,
+      "description": "Interface: CYSEHR_IT0014_IT0015",
+      "tipo_registro": "C"
+    },
+    "HEA1_FILLER1": {
+      "pos_inicial": 21,
+      "tamanho": 21,
+      "description": "Filler: Brancos",
+      "tipo_registro": "C"
+    },
+    "HEA1_EMPRESA": {
+      "pos_inicial": 42,
+      "tamanho": 4,
+      "description": "Empresa: fixo 1000",
+      "tipo_registro": "C"
+    },
+    "HEA1_FILLER2": {
+      "pos_inicial": 46,
+      "tamanho": 30,
+      "description": "Filler: Brancos",
+      "tipo_registro": "C"
+    },
+    "HEA1_DATA_COR": {
+      "pos_inicial": 76,
+      "tamanho": 8,
+      "description": "Data corrente AAAAMMDD",
+      "tipo_registro": "C"
+    },
+    "HEA1_HORA_COR": {
+      "pos_inicial": 84,
+      "tamanho": 6,
+      "description": "Hora corrente HHMMSS",
+      "tipo_registro": "C"
+    },
+    "HEA1_RESTO": {
+      "pos_inicial": 90,
+      "tamanho": 151,
+      "description": "Resto: Brancos",
+      "tipo_registro": "C"
+    },
+
+    "_DETALHE_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO DETALHE (tipo 0) ---",
+      "tipo_registro": null
+    },
+    "SAI1_SEQUENCIA": {
+      "pos_inicial": 1,
+      "tamanho": 7,
+      "description": "Número sequencial",
+      "tipo_registro": "0"
+    },
+    "SAI1_AREA_FOLH": {
+      "pos_inicial": 8,
+      "tamanho": 2,
+      "description": "Área folha: fixo 1",
+      "tipo_registro": "0"
+    },
+    "SAI1_MAT_ATUALIZA": {
+      "pos_inicial": 10,
+      "tamanho": 12,
+      "description": "Matrícula atualiza: fixo *",
+      "tipo_registro": "0"
+    },
+    "SAI1_MATRICULA": {
+      "pos_inicial": 22,
+      "tamanho": 8,
+      "description": "Matrícula do empregado com 8 posições",
+      "tipo_registro": "0"
+    },
+    "SAI1_DATA_INIC_PAGTO": {
+      "pos_inicial": 30,
+      "tamanho": 8,
+      "description": "Data início pagamento (ex: 20230601)",
+      "tipo_registro": "0"
+    },
+    "SAI1_DATA_TERM_PAGTO": {
+      "pos_inicial": 38,
+      "tamanho": 8,
+      "description": "Data fim pagamento - último dia do mês (ex: 20230630)",
+      "tipo_registro": "0"
+    },
+    "SAI1_COD_PAGAMENTO": {
+      "pos_inicial": 46,
+      "tamanho": 4,
+      "description": "Rubrica envelopada (ex: 1098 benefício farmácia)",
+      "tipo_registro": "0"
+    },
+    "SAI1_MONTANTE": {
+      "pos_inicial": 50,
+      "tamanho": 15,
+      "description": "Valor: 12 inteiros + ponto + 2 decimais (ex: 000000000297.93)",
+      "tipo_registro": "0"
+    },
+    "SAI1_UNIDADE": {
+      "pos_inicial": 65,
+      "tamanho": 7,
+      "description": "Unidade: fixo 0000.00",
+      "tipo_registro": "0"
+    },
+    "SAI1_TIPO_OPER": {
+      "pos_inicial": 72,
+      "tamanho": 1,
+      "description": "Tipo operação: I para inclusão",
+      "tipo_registro": "0"
+    },
+    "SAI1_RESTO": {
+      "pos_inicial": 73,
+      "tamanho": 168,
+      "description": "Resto: Brancos",
+      "tipo_registro": "0"
+    },
+
+    "_TRAILER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO TRAILER (tipo R) ---",
+      "tipo_registro": null
+    },
+    "TRA1_FIXO": {
+      "pos_inicial": 1,
+      "tamanho": 1,
+      "description": "Fixo R de rodapé",
+      "tipo_registro": "R"
+    },
+    "TRA1_DATA_COR": {
+      "pos_inicial": 2,
+      "tamanho": 8,
+      "description": "Data corrente AAAAMMDD",
+      "tipo_registro": "R"
+    },
+    "TRA1_HORA_COR": {
+      "pos_inicial": 10,
+      "tamanho": 6,
+      "description": "Hora corrente HHMMSS",
+      "tipo_registro": "R"
+    },
+    "TRA1_CONT1": {
+      "pos_inicial": 16,
+      "tamanho": 6,
+      "description": "Quantidade de linhas de detalhe",
+      "tipo_registro": "R"
+    },
+    "TRA1_CONT2": {
+      "pos_inicial": 22,
+      "tamanho": 6,
+      "description": "Quantidade de linhas de detalhe",
+      "tipo_registro": "R"
+    },
+    "TRA1_RESTO": {
+      "pos_inicial": 28,
+      "tamanho": 213,
+      "description": "Resto: Brancos",
+      "tipo_registro": "R"
+    }
+  }
+}

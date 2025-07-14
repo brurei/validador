@@ -1,0 +1,245 @@
+{
+  "name": "Retorno Folha Petrobras",
+  "description": "Layout para arquivo de retorno folha SAP Petrobras (240 posições)",
+  "program": "Arquivo gerado pelo SAP - tratado no P081003",
+  "record_size": 240,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 00=Header, 01=Detalhe, 99=Trailer",
+      "tipo_registro": null
+    },
+
+    "_HEADER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO HEADER (tipo 00) ---",
+      "tipo_registro": null
+    },
+    "TAB_ENVIADA": {
+      "pos_inicial": 3,
+      "tamanho": 22,
+      "description": "Tabela enviada: PES.CHEQUE_HISTORICO",
+      "tipo_registro": "00"
+    },
+    "ID_REGISTRO": {
+      "pos_inicial": 25,
+      "tamanho": 18,
+      "description": "ID do registro: zero",
+      "tipo_registro": "00"
+    },
+    "NOME_INTERFACE": {
+      "pos_inicial": 43,
+      "tamanho": 40,
+      "description": "Nome da interface: SAP - SAM",
+      "tipo_registro": "00"
+    },
+    "EMPRESA": {
+      "pos_inicial": 83,
+      "tamanho": 2,
+      "description": "Empresa: fixo 01",
+      "tipo_registro": "00"
+    },
+    "ORGAO": {
+      "pos_inicial": 85,
+      "tamanho": 22,
+      "description": "Órgão: SAUDE PETROBRAS",
+      "tipo_registro": "00"
+    },
+    "ORIGEM": {
+      "pos_inicial": 107,
+      "tamanho": 13,
+      "description": "Origem: SAP PETROBRAS",
+      "tipo_registro": "00"
+    },
+    "DESTINO": {
+      "pos_inicial": 120,
+      "tamanho": 10,
+      "description": "Destino: SAM",
+      "tipo_registro": "00"
+    },
+    "DT_INI_CRIACAO": {
+      "pos_inicial": 130,
+      "tamanho": 8,
+      "description": "Data início criação: DDMMAAAA",
+      "tipo_registro": "00"
+    },
+    "HH_INI_CRIACAO": {
+      "pos_inicial": 138,
+      "tamanho": 6,
+      "description": "Hora início criação: espaços",
+      "tipo_registro": "00"
+    },
+    "FILLER1": {
+      "pos_inicial": 144,
+      "tamanho": 1,
+      "description": "Filler: espaço",
+      "tipo_registro": "00"
+    },
+    "DATA_REFERENCIA": {
+      "pos_inicial": 145,
+      "tamanho": 6,
+      "description": "Data referência: espaços",
+      "tipo_registro": "00"
+    },
+    "FILLER2": {
+      "pos_inicial": 151,
+      "tamanho": 90,
+      "description": "Filler: espaços",
+      "tipo_registro": "00"
+    },
+
+    "_DETALHE_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO DETALHE (tipo 01) ---",
+      "tipo_registro": null
+    },
+    "CTD_LINHA": {
+      "pos_inicial": 3,
+      "tamanho": 8,
+      "description": "Contador de linha: espaços",
+      "tipo_registro": "01"
+    },
+    "ENT_NR_MATRICULA": {
+      "pos_inicial": 11,
+      "tamanho": 7,
+      "description": "Número da matrícula: 9999999",
+      "tipo_registro": "01"
+    },
+    "ENT_DT_REFER_PGTO": {
+      "pos_inicial": 18,
+      "tamanho": 10,
+      "description": "Data referência pagamento: DD.MM.AAAA",
+      "tipo_registro": "01"
+    },
+    "ENT_COPA_CD_ID": {
+      "pos_inicial": 28,
+      "tamanho": 4,
+      "description": "Código da rubrica folha: 9999",
+      "tipo_registro": "01"
+    },
+    "ENT_CHME_CD_ORDEM": {
+      "pos_inicial": 32,
+      "tamanho": 2,
+      "description": "Código ordem: verificar com equipe SAP Folha",
+      "tipo_registro": "01"
+    },
+    "ENT_CHME_IN_PAGTO": {
+      "pos_inicial": 34,
+      "tamanho": 3,
+      "description": "Indicador pagamento: verificar com equipe SAP Folha",
+      "tipo_registro": "01"
+    },
+    "ENT_ORG_PAG": {
+      "pos_inicial": 37,
+      "tamanho": 3,
+      "description": "Órgão pagamento: verificar com equipe SAP Folha",
+      "tipo_registro": "01"
+    },
+    "ENT_ORGAO_CONT": {
+      "pos_inicial": 40,
+      "tamanho": 3,
+      "description": "Órgão contábil: verificar com equipe SAP Folha",
+      "tipo_registro": "01"
+    },
+    "ENT_DT_PAGTO": {
+      "pos_inicial": 43,
+      "tamanho": 10,
+      "description": "Data pagamento: DD.MM.AAAA",
+      "tipo_registro": "01"
+    },
+    "ENT_DT_OCOR_INIC": {
+      "pos_inicial": 53,
+      "tamanho": 10,
+      "description": "Data ocorrência início: DD.MM.AAAA",
+      "tipo_registro": "01"
+    },
+    "ENT_DT_OCOR_TERM": {
+      "pos_inicial": 63,
+      "tamanho": 10,
+      "description": "Data ocorrência término: DD.MM.AAAA",
+      "tipo_registro": "01"
+    },
+    "ENT_QN_PAGTO": {
+      "pos_inicial": 73,
+      "tamanho": 5,
+      "description": "Quantidade pagamento: 9(03)V99",
+      "tipo_registro": "01"
+    },
+    "ENT_SINAL": {
+      "pos_inicial": 78,
+      "tamanho": 1,
+      "description": "Sinal: + ou -",
+      "tipo_registro": "01"
+    },
+    "ENT_VL_PAGTO": {
+      "pos_inicial": 79,
+      "tamanho": 15,
+      "description": "Valor pagamento: 9(13)V99",
+      "tipo_registro": "01"
+    },
+    "ENT_CECU_CD_CODIGO": {
+      "pos_inicial": 94,
+      "tamanho": 7,
+      "description": "Código centro de custo: verificar com equipe SAP Folha",
+      "tipo_registro": "01"
+    },
+    "ENT_ORG_LOT": {
+      "pos_inicial": 101,
+      "tamanho": 3,
+      "description": "Órgão lotação: verificar com equipe SAP Folha",
+      "tipo_registro": "01"
+    },
+    "ENT_COMPLEMENTO": {
+      "pos_inicial": 104,
+      "tamanho": 137,
+      "description": "Complemento: verificar com equipe SAP Folha",
+      "tipo_registro": "01"
+    },
+
+    "_TRAILER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO TRAILER (tipo 99) ---",
+      "tipo_registro": null
+    },
+    "TXT_TRAILLER": {
+      "pos_inicial": 3,
+      "tamanho": 8,
+      "description": "Texto trailer: TRAILER",
+      "tipo_registro": "99"
+    },
+    "DT_FIM_CRIACAO": {
+      "pos_inicial": 11,
+      "tamanho": 8,
+      "description": "Data fim criação: DDMMAAAA",
+      "tipo_registro": "99"
+    },
+    "HH_FIM_CRIACAO": {
+      "pos_inicial": 19,
+      "tamanho": 6,
+      "description": "Hora fim criação: HHMMSS",
+      "tipo_registro": "99"
+    },
+    "TOT_REG_01": {
+      "pos_inicial": 25,
+      "tamanho": 8,
+      "description": "Total registros 01: total de linhas detalhe",
+      "tipo_registro": "99"
+    },
+    "TOT_REG_DADOS": {
+      "pos_inicial": 33,
+      "tamanho": 8,
+      "description": "Total registros dados: total geral do arquivo",
+      "tipo_registro": "99"
+    },
+    "FILLER3": {
+      "pos_inicial": 41,
+      "tamanho": 200,
+      "description": "Filler: espaços",
+      "tipo_registro": "99"
+    }
+  }
+}

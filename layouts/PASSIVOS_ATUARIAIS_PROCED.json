@@ -1,0 +1,105 @@
+{
+  "name": "Passivos Atuariais - Procedimentos",
+  "description": "Layout para arquivo de passivos atuariais - procedimentos/cálculos (formato posicional)",
+  "program": "PASSIVOS_ATUARIAIS_PROCED",
+  "record_size": 250,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro",
+      "tipo_registro": null
+    },
+
+    "_PROCED_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DE PROCEDIMENTOS ATUARIAIS ---",
+      "tipo_registro": null
+    },
+    "CODIGO_PROCEDIMENTO": {
+      "pos_inicial": 1,
+      "tamanho": 10,
+      "description": "Código do procedimento atuarial",
+      "tipo_registro": "02"
+    },
+    "TIPO_CALCULO": {
+      "pos_inicial": 11,
+      "tamanho": 5,
+      "description": "Tipo de cálculo: PROV, BENEF, etc",
+      "tipo_registro": "02"
+    },
+    "MATRICULA": {
+      "pos_inicial": 16,
+      "tamanho": 12,
+      "description": "Matrícula do participante",
+      "tipo_registro": "02"
+    },
+    "DATA_CALCULO": {
+      "pos_inicial": 28,
+      "tamanho": 8,
+      "description": "Data cálculo DDMMAAAA",
+      "tipo_registro": "02"
+    },
+    "DATA_REFERENCIA": {
+      "pos_inicial": 36,
+      "tamanho": 8,
+      "description": "Data referência DDMMAAAA",
+      "tipo_registro": "02"
+    },
+    "VALOR_PRESENTE": {
+      "pos_inicial": 44,
+      "tamanho": 18,
+      "description": "Valor presente atuarial (com 2 decimais)",
+      "tipo_registro": "02"
+    },
+    "VALOR_FUTURO": {
+      "pos_inicial": 62,
+      "tamanho": 18,
+      "description": "Valor futuro estimado (com 2 decimais)",
+      "tipo_registro": "02"
+    },
+    "TAXA_DESCONTO": {
+      "pos_inicial": 80,
+      "tamanho": 8,
+      "description": "Taxa desconto (6 decimais)",
+      "tipo_registro": "02"
+    },
+    "PRAZO_ANOS": {
+      "pos_inicial": 88,
+      "tamanho": 5,
+      "description": "Prazo em anos",
+      "tipo_registro": "02"
+    },
+    "PROBABILIDADE": {
+      "pos_inicial": 93,
+      "tamanho": 10,
+      "description": "Probabilidade atuarial (6 decimais)",
+      "tipo_registro": "02"
+    },
+    "PROVISAO_NECESSARIA": {
+      "pos_inicial": 103,
+      "tamanho": 18,
+      "description": "Provisão necessária (com 2 decimais)",
+      "tipo_registro": "02"
+    },
+    "STATUS_CALCULO": {
+      "pos_inicial": 121,
+      "tamanho": 1,
+      "description": "Status: V=Válido, I=Inválido",
+      "tipo_registro": "02"
+    },
+    "CODIGO_PLANO": {
+      "pos_inicial": 122,
+      "tamanho": 10,
+      "description": "Código do plano",
+      "tipo_registro": "02"
+    },
+    "FILLER": {
+      "pos_inicial": 132,
+      "tamanho": 119,
+      "description": "Filler: espaços",
+      "tipo_registro": "02"
+    }
+  }
+}

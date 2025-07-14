@@ -1,0 +1,434 @@
+{
+  "name": "SECA",
+  "description": "Layout do arquivo SERVIÇO CALCULADO - Sistema SSTO",
+  "record_size": 600,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 00=Header, 01=Serviço Calculado, 99=Trailer"
+    },
+    "TAB_ENVIADA": {
+      "pos_inicial": 3,
+      "tamanho": 22,
+      "description": "SERVICO CALCULADO"
+    },
+    "ID_REGISTRO": {
+      "pos_inicial": 25,
+      "tamanho": 18,
+      "description": "Numero da Versao do arquivo"
+    },
+    "NOME_INTERFACE": {
+      "pos_inicial": 43,
+      "tamanho": 40,
+      "description": "MIGRACAO TEMPO"
+    },
+    "EMPRESA": {
+      "pos_inicial": 83,
+      "tamanho": 2,
+      "description": "01"
+    },
+    "ORGAO": {
+      "pos_inicial": 85,
+      "tamanho": 22,
+      "description": "TIC/CPSW/IST-I/PTEC-RJ"
+    },
+    "ORIGEM": {
+      "pos_inicial": 107,
+      "tamanho": 10,
+      "description": "SAM"
+    },
+    "DESTINO": {
+      "pos_inicial": 117,
+      "tamanho": 10,
+      "description": "CRC"
+    },
+    "DT_INI_CRIACAO": {
+      "pos_inicial": 127,
+      "tamanho": 8,
+      "description": "Data da geração do Arquivo Formato: DDMMAAAA"
+    },
+    "HH_INI_CRIACAO": {
+      "pos_inicial": 135,
+      "tamanho": 6,
+      "description": "Formato: HHMMSS"
+    },
+    "FILLER": {
+      "pos_inicial": 141,
+      "tamanho": 1,
+      "description": "Brancos"
+    },
+    "DATA_REFERENCIA": {
+      "pos_inicial": 142,
+      "tamanho": 6,
+      "description": "AAAAMM"
+    },
+    "NUMERO_LINHA": {
+      "pos_inicial": 3,
+      "tamanho": 8,
+      "description": "Numero da linha gravada"
+    },
+    "CRAM_CD_CREDENCIAD": {
+      "pos_inicial": 11,
+      "tamanho": 14,
+      "description": "CPF/CNPJ do Credenciado"
+    },
+    "CRAM_NM_CREDENCIAD": {
+      "pos_inicial": 25,
+      "tamanho": 50,
+      "description": "Nome do Prestador ou Credenc."
+    },
+    "ORPA_CD_ORG_PAG": {
+      "pos_inicial": 75,
+      "tamanho": 4,
+      "description": "Orgao Financeiro - 4 Inteiros"
+    },
+    "CONL_CD_LOCALIDADE": {
+      "pos_inicial": 79,
+      "tamanho": 4,
+      "description": "Código da localidade"
+    },
+    "EMPA_CD_EMPRESA": {
+      "pos_inicial": 83,
+      "tamanho": 2,
+      "description": "Empresa do Beneficiario"
+    },
+    "BEAM_NR_MATRICULA": {
+      "pos_inicial": 85,
+      "tamanho": 8,
+      "description": "Matricula do Beneficiario"
+    },
+    "NUMERO_BENEFICIARIO": {
+      "pos_inicial": 93,
+      "tamanho": 2,
+      "description": "Número do Beneficiario"
+    },
+    "CRAM_CD_CBI": {
+      "pos_inicial": 95,
+      "tamanho": 4,
+      "description": "CBI do Credenciado - 4 Inteiros"
+    },
+    "BEAM_CD_CBI": {
+      "pos_inicial": 99,
+      "tamanho": 4,
+      "description": "CBI do beneficiário - 4 Inteiros"
+    },
+    "COBI_CD_CBI": {
+      "pos_inicial": 103,
+      "tamanho": 4,
+      "description": "Código do CBI responsável pelo documento - 4 Inteiros"
+    },
+    "RSPA_CD_RISCO": {
+      "pos_inicial": 107,
+      "tamanho": 1,
+      "description": "Código do risco: P=pequeno, G=grande, O=odontologia, E=PAE, R=Perito-odonto"
+    },
+    "RSPA_NR_AUTORIZA": {
+      "pos_inicial": 108,
+      "tamanho": 5,
+      "description": "Numero da Autorização"
+    },
+    "RSPA_CD_CBI_RESP": {
+      "pos_inicial": 113,
+      "tamanho": 4,
+      "description": "CBI responsável pela autorização - 4 Inteiros"
+    },
+    "RSPA_DT_ENTRADA": {
+      "pos_inicial": 117,
+      "tamanho": 10,
+      "description": "Data de início da internação/atendimento ambulatorial DD.MM.YYYY"
+    },
+    "RSPA_DT_SAIDA": {
+      "pos_inicial": 127,
+      "tamanho": 10,
+      "description": "Data de saída da internação/atendimento ambulatorial DD.MM.YYYY"
+    },
+    "RSPI_DT_REALIZACAO": {
+      "pos_inicial": 137,
+      "tamanho": 10,
+      "description": "Data de realização do serviço DD.MM.YYYY"
+    },
+    "RSPI_QN_OCORRENCIAS": {
+      "pos_inicial": 147,
+      "tamanho": 3,
+      "description": "Quantidade de ocorrências pagas do serviço - 3 Inteiros"
+    },
+    "RSPI_QN_OCOR_COBR": {
+      "pos_inicial": 150,
+      "tamanho": 3,
+      "description": "Quantidade de ocorrências cobradas do serviço - 3 Inteiros"
+    },
+    "RSPI_CD_PERC_ADIC": {
+      "pos_inicial": 153,
+      "tamanho": 1,
+      "description": "Código percentual adicional: A=PASA, B=+70%, C=+50%, etc."
+    },
+    "RSPI_CD_USO_INTERN": {
+      "pos_inicial": 154,
+      "tamanho": 1,
+      "description": "Código uso interno: C=Valor informado, E=Desconto integral, etc."
+    },
+    "RSPI_VL_SERV_CALCU": {
+      "pos_inicial": 155,
+      "tamanho": 11,
+      "description": "Valor serviço calculado - 9 Inteiros + 2 Decimais"
+    },
+    "RSPI_VL_APRESENTAD": {
+      "pos_inicial": 166,
+      "tamanho": 11,
+      "description": "Valor apresentado para pagamento - 9 Inteiros + 2 Decimais"
+    },
+    "VASE_VL_SERVICO": {
+      "pos_inicial": 177,
+      "tamanho": 11,
+      "description": "Valor serviço em USM - 9 Inteiros + 2 Decimais"
+    },
+    "VALOR_PARC_BENEF_USM": {
+      "pos_inicial": 188,
+      "tamanho": 11,
+      "description": "Valor parcela em USM - 9 Inteiros + 2 Decimais"
+    },
+    "RSPI_DT_ATUALIZADO": {
+      "pos_inicial": 199,
+      "tamanho": 10,
+      "description": "Data de Atualização"
+    },
+    "RSPA_DT_EMISSAO": {
+      "pos_inicial": 209,
+      "tamanho": 10,
+      "description": "Data de Emissão"
+    },
+    "SEHI_CD_SERVICO": {
+      "pos_inicial": 219,
+      "tamanho": 8,
+      "description": "Código Serviço CBHPM"
+    },
+    "RSPA_NR_DOCUM_EST": {
+      "pos_inicial": 227,
+      "tamanho": 6,
+      "description": "Numero Documento Estornado"
+    },
+    "RSPA_CD_SERIE_EST": {
+      "pos_inicial": 233,
+      "tamanho": 1,
+      "description": "Série Documento Estornado"
+    },
+    "LOGT_NR_LOTE": {
+      "pos_inicial": 234,
+      "tamanho": 12,
+      "description": "Numero do Lote Guia Tiss"
+    },
+    "GUTI_NR_GUIA": {
+      "pos_inicial": 246,
+      "tamanho": 20,
+      "description": "Numero da Guia Tiss"
+    },
+    "RSPA_NR_SEQ_GTISS": {
+      "pos_inicial": 266,
+      "tamanho": 4,
+      "description": "Numero de Sequencia do Item da Guia Tiss"
+    },
+    "TIPO_GUIA_TISS": {
+      "pos_inicial": 270,
+      "tamanho": 1,
+      "description": "Código do tipo de Guia TISS: 0=PAE/reembolso, 1=consulta, etc."
+    },
+    "CRAM_CD_INDIC_PAG": {
+      "pos_inicial": 271,
+      "tamanho": 1,
+      "description": "Indicador de Diretriz de Pagamento"
+    },
+    "RSPI_CD_FACE_DENTE": {
+      "pos_inicial": 272,
+      "tamanho": 5,
+      "description": "Código de face do dente: M=MESIAL, D=DISTAL, etc."
+    },
+    "RSPI_IN_PLANO": {
+      "pos_inicial": 277,
+      "tamanho": 1,
+      "description": "Indicador de Beneficiario Plano 28"
+    },
+    "TUOD_CD_SERVICO": {
+      "pos_inicial": 278,
+      "tamanho": 8,
+      "description": "Codigo Tuss Odontologia"
+    },
+    "DEOD_CD_DENTE_REG": {
+      "pos_inicial": 286,
+      "tamanho": 4,
+      "description": "Codigo Dente ou Região"
+    },
+    "MEAN_CD_MENSAGEM": {
+      "pos_inicial": 290,
+      "tamanho": 4,
+      "description": "Codigo Glosa Dominio Tiss"
+    },
+    "RSPI_IN_GLOSA": {
+      "pos_inicial": 294,
+      "tamanho": 1,
+      "description": "Indicador de Glosa"
+    },
+    "RSPI_VL_COBRADO": {
+      "pos_inicial": 295,
+      "tamanho": 11,
+      "description": "Valor cobrado originalmente - 9 Inteiros + 2 Decimais"
+    },
+    "RSPA_CD_SERIE_DOCU": {
+      "pos_inicial": 306,
+      "tamanho": 1,
+      "description": "Série Documento de Cobrança: R/W=Reprocessamento, E=Estorno simples"
+    },
+    "RSPA_CD_TIPO_DOCUM": {
+      "pos_inicial": 307,
+      "tamanho": 1,
+      "description": "Código do Tipo de documento: B=Livre Escolha AM, C=Livre Escolha Odonto, etc."
+    },
+    "RSPI_NR_ITEM": {
+      "pos_inicial": 308,
+      "tamanho": 2,
+      "description": "Item Documento Cobrança"
+    },
+    "SEME_CD_SERVICO": {
+      "pos_inicial": 310,
+      "tamanho": 8,
+      "description": "Codigo de Serviço"
+    },
+    "RSPI_VL_IR_CALCULA": {
+      "pos_inicial": 318,
+      "tamanho": 11,
+      "description": "Valor IR Calculado - 9 Inteiros + 2 Decimais"
+    },
+    "RSPI_VL_INSS_CALC": {
+      "pos_inicial": 329,
+      "tamanho": 11,
+      "description": "Valor calculado do INSS - 9 Inteiros + 2 Decimais"
+    },
+    "RSPI_VL_ISS_CALCUL": {
+      "pos_inicial": 340,
+      "tamanho": 11,
+      "description": "Valor calculado do ISS - 9 Inteiros + 2 Decimais"
+    },
+    "VALOR_COFINS": {
+      "pos_inicial": 351,
+      "tamanho": 11,
+      "description": "Valor calculado do COFINS - 7 Inteiros + 4 Decimais"
+    },
+    "PERCENTUAL_COFINS": {
+      "pos_inicial": 362,
+      "tamanho": 5,
+      "description": "Percentual de Cofins - 3 Inteiros + 2 Decimais"
+    },
+    "VALOR_PIS": {
+      "pos_inicial": 369,
+      "tamanho": 11,
+      "description": "Valor de PIS - 7 Inteiros + 4 Decimais"
+    },
+    "PERCENTUAL_PIS": {
+      "pos_inicial": 384,
+      "tamanho": 5,
+      "description": "Percentual de PIS - 3 Inteiros + 2 Decimais"
+    },
+    "VALOR_CSLL": {
+      "pos_inicial": 391,
+      "tamanho": 11,
+      "description": "Valor de CSLL - 7 Inteiros + 4 Decimais"
+    },
+    "PERCENTUAL_CSLL": {
+      "pos_inicial": 406,
+      "tamanho": 5,
+      "description": "Percentual de CSLL - 3 Inteiros + 2 decimais"
+    },
+    "VALOR_IR": {
+      "pos_inicial": 413,
+      "tamanho": 11,
+      "description": "Valor de IR - 7 Inteiros + 4 Decimais"
+    },
+    "PERCENTUAL_IR": {
+      "pos_inicial": 428,
+      "tamanho": 5,
+      "description": "Percentual de IR - 3 Inteiros + 2 Decimais"
+    },
+    "VALOR_LEI_10833_COOP": {
+      "pos_inicial": 435,
+      "tamanho": 11,
+      "description": "Valor Lei 10833 Cooperativa - 7 Inteiros + 4 Decimais"
+    },
+    "PERCENTUAL_LEI_10833": {
+      "pos_inicial": 450,
+      "tamanho": 5,
+      "description": "Percentual da Lei 10833 - 3 Inteiros + 2 Decimais"
+    },
+    "VALOR_LEI_10833_NAO_COOP": {
+      "pos_inicial": 457,
+      "tamanho": 11,
+      "description": "Valor Lei 10833 Não Cooperativa - 7 Inteiros + 4 Decimais"
+    },
+    "PERCENTUAL_LEI_10833_NAO_COOP": {
+      "pos_inicial": 472,
+      "tamanho": 5,
+      "description": "Percentual Lei 10833 Não Cooperativa - 3 Inteiros + 2 Decimais"
+    },
+    "VALOR_IR_PESSOA_FISICA": {
+      "pos_inicial": 479,
+      "tamanho": 11,
+      "description": "Valor IR P.FISICA - 7 Inteiros + 4 Decimais"
+    },
+    "RSPI_PR_EMPREGADO": {
+      "pos_inicial": 494,
+      "tamanho": 5,
+      "description": "Percentual Participação do beneficiário - 3 Inteiros + 2 Decimais"
+    },
+    "RSPI_VL_PARC_EMPR": {
+      "pos_inicial": 499,
+      "tamanho": 11,
+      "description": "Valor da parcela do empregado - 9 Inteiros + 2 Decimais"
+    },
+    "RSPA_NR_DOCUMENTO": {
+      "pos_inicial": 510,
+      "tamanho": 6,
+      "description": "Numero Documento de Cobrança no SAM"
+    },
+    "NUMERO_DOCUMENTO_CRC": {
+      "pos_inicial": 516,
+      "tamanho": 40,
+      "description": "Numero Documento CRC"
+    },
+    "SITUACAO_DOCUMENTO": {
+      "pos_inicial": 556,
+      "tamanho": 1,
+      "description": "Código de situação: A=ativo, I=inativo, D=adiantado, P=pago, J=a justificar, Q=quitado"
+    },
+    "SENHA_CRC": {
+      "pos_inicial": 557,
+      "tamanho": 10,
+      "description": "Senha da CRC"
+    },
+    "TIPO_OPERACAO": {
+      "pos_inicial": 567,
+      "tamanho": 1,
+      "description": "I (inclusão), A (alteração) E(exclusão)"
+    },
+    "SUBPROGRAMA": {
+      "pos_inicial": 568,
+      "tamanho": 3,
+      "description": "Código do subprograma na GAMA"
+    },
+    "CATEGORIA_DESPESA": {
+      "pos_inicial": 571,
+      "tamanho": 2,
+      "description": "01=Consultas, 02=Exames/Terapias, 03=Internação, 04=Odontologia, 09=Outras despesas"
+    }
+  },
+  "record_types": [
+    "00",
+    "01",
+    "99"
+  ],
+  "identifier": {
+    "record_types": [
+      "00 - Header do Arquivo",
+      "01 - Arquivo Serviço Calculado",
+      "99 - Trailer do Arquivo"
+    ]
+  }
+}

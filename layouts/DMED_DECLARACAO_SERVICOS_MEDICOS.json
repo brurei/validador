@@ -1,0 +1,434 @@
+{
+  "name": "DMED - Declaração de Serviços Médicos e Saúde",
+  "description": "Layout para arquivo DMED - Declaração de Serviços Médicos e Saúde",
+  "program": "DMED",
+  "record_size": null,
+  "fields": {
+    "IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": null,
+      "description": "Identificador do registro: Dmed|RESPO|DECPJ|OPPAS|TOP|RTOP|DTOP|RDTOP|PSS|RPPSS|BRPPSS|FIMDmed",
+      "tipo_registro": null
+    },
+
+    "_DMED_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO DMED ---",
+      "tipo_registro": null
+    },
+    "DMED_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 4,
+      "description": "Identificador: Dmed",
+      "tipo_registro": "Dmed"
+    },
+    "DMED_ANO_REFERENCIA": {
+      "pos_inicial": 2,
+      "tamanho": 4,
+      "description": "Ano referência: 2023",
+      "tipo_registro": "Dmed"
+    },
+    "DMED_ANO_CALENDARIO": {
+      "pos_inicial": 3,
+      "tamanho": 4,
+      "description": "Ano-calendário: 2017 a 2023",
+      "tipo_registro": "Dmed"
+    },
+    "DMED_INDICADOR_RETIFICADORA": {
+      "pos_inicial": 4,
+      "tamanho": 1,
+      "description": "Indicador retificadora: S=Retificadora, N=Original",
+      "tipo_registro": "Dmed"
+    },
+    "DMED_NUMERO_RECIBO": {
+      "pos_inicial": 5,
+      "tamanho": 12,
+      "description": "Número do recibo (opcional)",
+      "tipo_registro": "Dmed"
+    },
+    "DMED_IDENTIFICADOR_ESTRUTURA": {
+      "pos_inicial": 6,
+      "tamanho": 6,
+      "description": "Identificador estrutura leiaute (opcional)",
+      "tipo_registro": "Dmed"
+    },
+
+    "_RESPO_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO RESPO ---",
+      "tipo_registro": null
+    },
+    "RESPO_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 5,
+      "description": "Identificador: RESPO",
+      "tipo_registro": "RESPO"
+    },
+    "RESPO_CPF": {
+      "pos_inicial": 2,
+      "tamanho": 11,
+      "description": "CPF do responsável",
+      "tipo_registro": "RESPO"
+    },
+    "RESPO_NOME": {
+      "pos_inicial": 3,
+      "tamanho": 60,
+      "description": "Nome do responsável",
+      "tipo_registro": "RESPO"
+    },
+    "RESPO_DDD": {
+      "pos_inicial": 4,
+      "tamanho": 2,
+      "description": "DDD",
+      "tipo_registro": "RESPO"
+    },
+    "RESPO_TELEFONE": {
+      "pos_inicial": 5,
+      "tamanho": 9,
+      "description": "Telefone",
+      "tipo_registro": "RESPO"
+    },
+    "RESPO_RAMAL": {
+      "pos_inicial": 6,
+      "tamanho": 6,
+      "description": "Ramal (opcional)",
+      "tipo_registro": "RESPO"
+    },
+    "RESPO_FAX": {
+      "pos_inicial": 7,
+      "tamanho": 9,
+      "description": "Fax (opcional)",
+      "tipo_registro": "RESPO"
+    },
+    "RESPO_EMAIL": {
+      "pos_inicial": 8,
+      "tamanho": 50,
+      "description": "Correio eletrônico (opcional)",
+      "tipo_registro": "RESPO"
+    },
+
+    "_DECPJ_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO DECPJ ---",
+      "tipo_registro": null
+    },
+    "DECPJ_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 5,
+      "description": "Identificador: DECPJ",
+      "tipo_registro": "DECPJ"
+    },
+    "DECPJ_CNPJ": {
+      "pos_inicial": 2,
+      "tamanho": 14,
+      "description": "CNPJ",
+      "tipo_registro": "DECPJ"
+    },
+    "DECPJ_NOME_EMPRESARIAL": {
+      "pos_inicial": 3,
+      "tamanho": 150,
+      "description": "Nome empresarial",
+      "tipo_registro": "DECPJ"
+    },
+    "DECPJ_TIPO_DECLARANTE": {
+      "pos_inicial": 4,
+      "tamanho": 1,
+      "description": "Tipo declarante: 1=Prestador, 2=Operadora, 3=Ambos",
+      "tipo_registro": "DECPJ"
+    },
+    "DECPJ_REGISTRO_ANS": {
+      "pos_inicial": 5,
+      "tamanho": 6,
+      "description": "Registro ANS (opcional)",
+      "tipo_registro": "DECPJ"
+    },
+    "DECPJ_CNES": {
+      "pos_inicial": 6,
+      "tamanho": 7,
+      "description": "CNES (opcional)",
+      "tipo_registro": "DECPJ"
+    },
+    "DECPJ_CPF_RESPONSAVEL": {
+      "pos_inicial": 7,
+      "tamanho": 11,
+      "description": "CPF responsável perante CNPJ",
+      "tipo_registro": "DECPJ"
+    },
+    "DECPJ_INDICADOR_SITUACAO": {
+      "pos_inicial": 8,
+      "tamanho": 1,
+      "description": "Indicador situação: S=Especial, N=Normal",
+      "tipo_registro": "DECPJ"
+    },
+    "DECPJ_DATA_EVENTO": {
+      "pos_inicial": 9,
+      "tamanho": 8,
+      "description": "Data evento (opcional)",
+      "tipo_registro": "DECPJ"
+    },
+    "DECPJ_INDICADOR_REGISTRO_ANS": {
+      "pos_inicial": 10,
+      "tamanho": 1,
+      "description": "Indicador registro ANS: S=Possui, N=Não possui",
+      "tipo_registro": "DECPJ"
+    },
+
+    "_OPPAS_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO OPPAS ---",
+      "tipo_registro": null
+    },
+    "OPPAS_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 5,
+      "description": "Identificador: OPPAS",
+      "tipo_registro": "OPPAS"
+    },
+
+    "_TOP_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO TOP ---",
+      "tipo_registro": null
+    },
+    "TOP_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 3,
+      "description": "Identificador: TOP",
+      "tipo_registro": "TOP"
+    },
+    "TOP_CPF_TITULAR": {
+      "pos_inicial": 2,
+      "tamanho": 11,
+      "description": "CPF do titular",
+      "tipo_registro": "TOP"
+    },
+    "TOP_NOME": {
+      "pos_inicial": 3,
+      "tamanho": 60,
+      "description": "Nome do titular",
+      "tipo_registro": "TOP"
+    },
+    "TOP_VALOR_PAGO_ANO": {
+      "pos_inicial": 4,
+      "tamanho": 9,
+      "description": "Valor pago no ano com o titular (opcional)",
+      "tipo_registro": "TOP"
+    },
+
+    "_RTOP_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO RTOP ---",
+      "tipo_registro": null
+    },
+    "RTOP_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 4,
+      "description": "Identificador: RTOP",
+      "tipo_registro": "RTOP"
+    },
+    "RTOP_CPF_CNPJ_PRESTADOR": {
+      "pos_inicial": 2,
+      "tamanho": 14,
+      "description": "CPF/CNPJ prestador serviço",
+      "tipo_registro": "RTOP"
+    },
+    "RTOP_NOME_PRESTADOR": {
+      "pos_inicial": 3,
+      "tamanho": 150,
+      "description": "Nome/Nome empresarial prestador",
+      "tipo_registro": "RTOP"
+    },
+    "RTOP_VALOR_REEMBOLSO_ANO": {
+      "pos_inicial": 4,
+      "tamanho": 9,
+      "description": "Valor reembolso ano-calendário (opcional)",
+      "tipo_registro": "RTOP"
+    },
+    "RTOP_VALOR_REEMBOLSO_ANTERIOR": {
+      "pos_inicial": 5,
+      "tamanho": 9,
+      "description": "Valor reembolso anos anteriores (opcional)",
+      "tipo_registro": "RTOP"
+    },
+
+    "_DTOP_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO DTOP ---",
+      "tipo_registro": null
+    },
+    "DTOP_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 4,
+      "description": "Identificador: DTOP",
+      "tipo_registro": "DTOP"
+    },
+    "DTOP_CPF_DEPENDENTE": {
+      "pos_inicial": 2,
+      "tamanho": 11,
+      "description": "CPF dependente (opcional)",
+      "tipo_registro": "DTOP"
+    },
+    "DTOP_DATA_NASCIMENTO": {
+      "pos_inicial": 3,
+      "tamanho": 8,
+      "description": "Data nascimento (opcional)",
+      "tipo_registro": "DTOP"
+    },
+    "DTOP_NOME": {
+      "pos_inicial": 4,
+      "tamanho": 60,
+      "description": "Nome do dependente",
+      "tipo_registro": "DTOP"
+    },
+    "DTOP_RELACAO_DEPENDENCIA": {
+      "pos_inicial": 5,
+      "tamanho": 2,
+      "description": "Relação dependência: 03,04,06,08,10 (opcional)",
+      "tipo_registro": "DTOP"
+    },
+    "DTOP_VALOR_PAGO_ANO": {
+      "pos_inicial": 6,
+      "tamanho": 9,
+      "description": "Valor pago no ano com dependente (opcional)",
+      "tipo_registro": "DTOP"
+    },
+
+    "_RDTOP_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO RDTOP ---",
+      "tipo_registro": null
+    },
+    "RDTOP_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 5,
+      "description": "Identificador: RDTOP",
+      "tipo_registro": "RDTOP"
+    },
+    "RDTOP_CPF_CNPJ_PRESTADOR": {
+      "pos_inicial": 2,
+      "tamanho": 14,
+      "description": "CPF/CNPJ prestador serviço",
+      "tipo_registro": "RDTOP"
+    },
+    "RDTOP_NOME_PRESTADOR": {
+      "pos_inicial": 3,
+      "tamanho": 150,
+      "description": "Nome/Nome empresarial prestador",
+      "tipo_registro": "RDTOP"
+    },
+    "RDTOP_VALOR_REEMBOLSO_ANO": {
+      "pos_inicial": 4,
+      "tamanho": 9,
+      "description": "Valor reembolso ano-calendário (opcional)",
+      "tipo_registro": "RDTOP"
+    },
+    "RDTOP_VALOR_REEMBOLSO_ANTERIOR": {
+      "pos_inicial": 5,
+      "tamanho": 9,
+      "description": "Valor reembolso anos anteriores (opcional)",
+      "tipo_registro": "RDTOP"
+    },
+
+    "_PSS_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO PSS ---",
+      "tipo_registro": null
+    },
+    "PSS_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 3,
+      "description": "Identificador: PSS",
+      "tipo_registro": "PSS"
+    },
+
+    "_RPPSS_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO RPPSS ---",
+      "tipo_registro": null
+    },
+    "RPPSS_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 5,
+      "description": "Identificador: RPPSS",
+      "tipo_registro": "RPPSS"
+    },
+    "RPPSS_CPF_RESPONSAVEL": {
+      "pos_inicial": 2,
+      "tamanho": 11,
+      "description": "CPF responsável pagamento",
+      "tipo_registro": "RPPSS"
+    },
+    "RPPSS_NOME": {
+      "pos_inicial": 3,
+      "tamanho": 60,
+      "description": "Nome do responsável",
+      "tipo_registro": "RPPSS"
+    },
+    "RPPSS_VALOR_PAGO_BENEFICIO_PROPRIO": {
+      "pos_inicial": 4,
+      "tamanho": 9,
+      "description": "Valor pago benefício próprio (opcional)",
+      "tipo_registro": "RPPSS"
+    },
+
+    "_BRPPSS_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO BRPPSS ---",
+      "tipo_registro": null
+    },
+    "BRPPSS_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 6,
+      "description": "Identificador: BRPPSS",
+      "tipo_registro": "BRPPSS"
+    },
+    "BRPPSS_CPF_BENEFICIARIO": {
+      "pos_inicial": 2,
+      "tamanho": 11,
+      "description": "CPF beneficiário (opcional)",
+      "tipo_registro": "BRPPSS"
+    },
+    "BRPPSS_DATA_NASCIMENTO": {
+      "pos_inicial": 3,
+      "tamanho": 8,
+      "description": "Data nascimento (opcional)",
+      "tipo_registro": "BRPPSS"
+    },
+    "BRPPSS_NOME": {
+      "pos_inicial": 4,
+      "tamanho": 60,
+      "description": "Nome do beneficiário",
+      "tipo_registro": "BRPPSS"
+    },
+    "BRPPSS_VALOR_PAGO_ANO": {
+      "pos_inicial": 5,
+      "tamanho": 9,
+      "description": "Valor pago no ano com beneficiário",
+      "tipo_registro": "BRPPSS"
+    },
+
+    "_FIMDMED_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO REGISTRO FIMDMED ---",
+      "tipo_registro": null
+    },
+    "FIMDMED_IDENTIFICADOR": {
+      "pos_inicial": 1,
+      "tamanho": 7,
+      "description": "Identificador: FIMDmed",
+      "tipo_registro": "FIMDmed"
+    }
+  }
+}

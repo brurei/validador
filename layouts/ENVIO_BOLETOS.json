@@ -1,0 +1,233 @@
+{
+  "name": "Envio de Boletos",
+  "description": "Layout para arquivo de envio de boletos (106 posições)",
+  "program": "P081042",
+  "record_size": 106,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 1,
+      "description": "Tipo do registro: C=Header, 0=Detalhe, R=Trailer",
+      "tipo_registro": null
+    },
+
+    "_HEADER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO HEADER (tipo C) ---",
+      "tipo_registro": null
+    },
+    "HEA1_TP_REG_CAB": {
+      "pos_inicial": 1,
+      "tamanho": 1,
+      "description": "Tipo registro: C - Header",
+      "tipo_registro": "C"
+    },
+    "HEA1_NM_INTERFACE_CAB": {
+      "pos_inicial": 2,
+      "tamanho": 40,
+      "description": "Nome interface: YSEFI_AMS_ANISTIADOS / YSEFI_AMS_BOLETOSTBG / etc",
+      "tipo_registro": "C"
+    },
+    "HEA1_EMPRESA_CAB": {
+      "pos_inicial": 42,
+      "tamanho": 4,
+      "description": "Empresa",
+      "tipo_registro": "C"
+    },
+    "HEA1_OL_PROC_CAB": {
+      "pos_inicial": 46,
+      "tamanho": 10,
+      "description": "OL Processo",
+      "tipo_registro": "C"
+    },
+    "HEA1_SIS_ORIGEM_CAB": {
+      "pos_inicial": 56,
+      "tamanho": 3,
+      "description": "Sistema origem",
+      "tipo_registro": "C"
+    },
+    "HEA1_SIS_ANO_CAB": {
+      "pos_inicial": 59,
+      "tamanho": 2,
+      "description": "Sistema ano",
+      "tipo_registro": "C"
+    },
+    "HEA1_SIS_MES_CAB": {
+      "pos_inicial": 61,
+      "tamanho": 2,
+      "description": "Sistema mês",
+      "tipo_registro": "C"
+    },
+    "HEA1_SIS_SEQ_CAB": {
+      "pos_inicial": 63,
+      "tamanho": 2,
+      "description": "Sistema sequência",
+      "tipo_registro": "C"
+    },
+    "HEA1_BOL_NR_ENVIO": {
+      "pos_inicial": 65,
+      "tamanho": 1,
+      "description": "Boleto número envio",
+      "tipo_registro": "C"
+    },
+    "HEA1_SIS_DEST_CAB": {
+      "pos_inicial": 66,
+      "tamanho": 10,
+      "description": "Sistema destino",
+      "tipo_registro": "C"
+    },
+    "HEA1_DT_CRIA_CAB": {
+      "pos_inicial": 76,
+      "tamanho": 8,
+      "description": "Data criação",
+      "tipo_registro": "C"
+    },
+    "HEA1_HR_CRIA_CAB": {
+      "pos_inicial": 84,
+      "tamanho": 6,
+      "description": "Hora criação",
+      "tipo_registro": "C"
+    },
+    "HEA1_FILLER": {
+      "pos_inicial": 90,
+      "tamanho": 17,
+      "description": "Filler: Brancos",
+      "tipo_registro": "C"
+    },
+
+    "_DETALHE_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO DETALHE (tipo 0) ---",
+      "tipo_registro": null
+    },
+    "DET1_TP_REG_DET": {
+      "pos_inicial": 1,
+      "tamanho": 1,
+      "description": "Tipo registro: 0 - Detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_CT_REG_DET": {
+      "pos_inicial": 2,
+      "tamanho": 6,
+      "description": "Contador registro detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_DT_EMIS_DET": {
+      "pos_inicial": 8,
+      "tamanho": 8,
+      "description": "Data emissão detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_TP_DOC_DET": {
+      "pos_inicial": 16,
+      "tamanho": 2,
+      "description": "Tipo documento detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_MD_INT_DET": {
+      "pos_inicial": 18,
+      "tamanho": 3,
+      "description": "Modalidade interna detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_ID_TIT_DET": {
+      "pos_inicial": 21,
+      "tamanho": 18,
+      "description": "Identificador título detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_CPF_DET": {
+      "pos_inicial": 39,
+      "tamanho": 11,
+      "description": "CPF detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_VAL_DOC_DET": {
+      "pos_inicial": 50,
+      "tamanho": 13,
+      "description": "Valor documento detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_LOC_NEG_DET": {
+      "pos_inicial": 63,
+      "tamanho": 4,
+      "description": "Local negociação detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_COND_PAG_DET": {
+      "pos_inicial": 67,
+      "tamanho": 4,
+      "description": "Condição pagamento detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_DT_VENC_DET": {
+      "pos_inicial": 71,
+      "tamanho": 8,
+      "description": "Data vencimento detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_AREA_COB_DET": {
+      "pos_inicial": 79,
+      "tamanho": 2,
+      "description": "Área cobrança detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_VAL_PEQ_DET": {
+      "pos_inicial": 81,
+      "tamanho": 13,
+      "description": "Valor pequeno detalhe",
+      "tipo_registro": "0"
+    },
+    "DET1_VAL_GRD_DET": {
+      "pos_inicial": 94,
+      "tamanho": 13,
+      "description": "Valor grande detalhe",
+      "tipo_registro": "0"
+    },
+
+    "_TRAILER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO TRAILER (tipo R) ---",
+      "tipo_registro": null
+    },
+    "TRA1_TP_REG_ROD": {
+      "pos_inicial": 1,
+      "tamanho": 1,
+      "description": "Tipo registro: R - Trailer",
+      "tipo_registro": "R"
+    },
+    "TRA1_DT_FINA_ROD": {
+      "pos_inicial": 2,
+      "tamanho": 8,
+      "description": "Data final rodapé",
+      "tipo_registro": "R"
+    },
+    "TRA1_HR_FINA_ROD": {
+      "pos_inicial": 10,
+      "tamanho": 6,
+      "description": "Hora final rodapé",
+      "tipo_registro": "R"
+    },
+    "TRA1_TOT_REG0_ROD": {
+      "pos_inicial": 16,
+      "tamanho": 6,
+      "description": "Total registros 0 rodapé",
+      "tipo_registro": "R"
+    },
+    "TRA1_TOT_REG1_ROD": {
+      "pos_inicial": 22,
+      "tamanho": 6,
+      "description": "Total registros 1 rodapé",
+      "tipo_registro": "R"
+    },
+    "TRA1_FILLER": {
+      "pos_inicial": 28,
+      "tamanho": 79,
+      "description": "Filler: Brancos",
+      "tipo_registro": "R"
+    }
+  }
+}

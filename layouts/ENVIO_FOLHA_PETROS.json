@@ -1,0 +1,161 @@
+{
+  "name": "Arquivo Envio Folha Petros",
+  "description": "Layout para arquivo de envio folha Petros (200 posições)",
+  "program": "P0810W4",
+  "record_size": 200,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 01=Header, 02=Detalhe, 09=Trailer",
+      "tipo_registro": null
+    },
+
+    "_HEADER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO HEADER (tipo 01) ---",
+      "tipo_registro": null
+    },
+    "HEA1_TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 01 (Header)",
+      "tipo_registro": "01"
+    },
+    "HEA1_ID_EMPRESA": {
+      "pos_inicial": 3,
+      "tamanho": 6,
+      "description": "ID Empresa: 019090",
+      "tipo_registro": "01"
+    },
+    "HEA1_DATA_GERACAO": {
+      "pos_inicial": 9,
+      "tamanho": 8,
+      "description": "Data geração: DDMMAAAA",
+      "tipo_registro": "01"
+    },
+    "HEA1_DATA_COMPETENCIA": {
+      "pos_inicial": 17,
+      "tamanho": 6,
+      "description": "Data competência: AAAAMM",
+      "tipo_registro": "01"
+    },
+    "HEA1_NUM_VERSAO": {
+      "pos_inicial": 23,
+      "tamanho": 2,
+      "description": "Número versão: 01",
+      "tipo_registro": "01"
+    },
+    "HEA1_COD_CATEG_VERSAO": {
+      "pos_inicial": 25,
+      "tamanho": 1,
+      "description": "Código categoria versão: B",
+      "tipo_registro": "01"
+    },
+    "HEA1_FILLER": {
+      "pos_inicial": 26,
+      "tamanho": 175,
+      "description": "Filler: Brancos",
+      "tipo_registro": "01"
+    },
+
+    "_DETALHE_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO DETALHE (tipo 02) ---",
+      "tipo_registro": null
+    },
+    "DET1_TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 02 (Detalhe)",
+      "tipo_registro": "02"
+    },
+    "DET1_NR_MATRIC_OR": {
+      "pos_inicial": 3,
+      "tamanho": 10,
+      "description": "Matrícula do aposentado na Petros",
+      "tipo_registro": "02"
+    },
+    "DET1_CD_PAGAMENTO": {
+      "pos_inicial": 13,
+      "tamanho": 8,
+      "description": "Rubrica folha petros",
+      "tipo_registro": "02"
+    },
+    "DET1_NR_ORDEM": {
+      "pos_inicial": 21,
+      "tamanho": 4,
+      "description": "Número ordem: 0100 - Campo fixo",
+      "tipo_registro": "02"
+    },
+    "DET1_IND_FORMATO": {
+      "pos_inicial": 25,
+      "tamanho": 1,
+      "description": "Indicador formato: V",
+      "tipo_registro": "02"
+    },
+    "DET1_VLR_LANCAMENTO": {
+      "pos_inicial": 26,
+      "tamanho": 15,
+      "description": "Valor lançamento: Valor das despesas do beneficiário",
+      "tipo_registro": "02"
+    },
+    "DET1_DATA_INICIO": {
+      "pos_inicial": 41,
+      "tamanho": 8,
+      "description": "Data início: DDMMAAAA",
+      "tipo_registro": "02"
+    },
+    "DET1_DATA_FIM": {
+      "pos_inicial": 49,
+      "tamanho": 8,
+      "description": "Data fim: DDMMAAAA",
+      "tipo_registro": "02"
+    },
+    "DET1_COD_OPERACAO": {
+      "pos_inicial": 57,
+      "tamanho": 1,
+      "description": "Código operação: I - Inclusão",
+      "tipo_registro": "02"
+    },
+    "DET1_FILLER": {
+      "pos_inicial": 58,
+      "tamanho": 143,
+      "description": "Filler: Brancos",
+      "tipo_registro": "02"
+    },
+
+    "_TRAILER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO TRAILER (tipo 09) ---",
+      "tipo_registro": null
+    },
+    "TRA1_TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 09 (Trailer)",
+      "tipo_registro": "09"
+    },
+    "TRA1_FILLER1": {
+      "pos_inicial": 3,
+      "tamanho": 6,
+      "description": "Filler: Espaços",
+      "tipo_registro": "09"
+    },
+    "TRA1_QUANTIDADE_REG": {
+      "pos_inicial": 9,
+      "tamanho": 10,
+      "description": "Quantidade total de registros 02",
+      "tipo_registro": "09"
+    },
+    "TRA1_FILLER2": {
+      "pos_inicial": 19,
+      "tamanho": 182,
+      "description": "Filler: Espaços",
+      "tipo_registro": "09"
+    }
+  }
+}

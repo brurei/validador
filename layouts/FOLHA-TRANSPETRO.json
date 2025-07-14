@@ -1,0 +1,33 @@
+{
+  "name": "Folha Transpetro",
+  "description": "Layout para arquivo de folha Transpetro (37 posições, apenas detalhes)",
+  "program": "P081074",
+  "record_size": 37,
+  "fields": {
+    "MATRIC_DET": {
+      "pos_inicial": 1,
+      "tamanho": 8,
+      "description": "Matrícula - último caracter é desprezado. Matrícula SAM de 8 posições é formatada com '0' + 7 primeiros caracteres. Ex: '12345678' vira '01234567'"
+    },
+    "CODIGO_DET": {
+      "pos_inicial": 9,
+      "tamanho": 4,
+      "description": "Rubrica da folha Transpetro (coluna COPF_CD_PAGAMENTO da HILB, conforme tabela PES.CONV_CODIGO_PAG)"
+    },
+    "VALOR_DET": {
+      "pos_inicial": 13,
+      "tamanho": 13,
+      "description": "Valor com 10 inteiros, vírgula, e dois decimais em formato CHAR, a partir do FIFB_VL_PAGAMENTO da Ficha Financeira (FIFB). Formato: 9(10),99"
+    },
+    "DTINIC_DET": {
+      "pos_inicial": 26,
+      "tamanho": 10,
+      "description": "Data do último dia do mês de competência. Formato: DD.MM.AAAA"
+    },
+    "COD_RET_DET": {
+      "pos_inicial": 36,
+      "tamanho": 2,
+      "description": "Código retorno: fixo 00 (zeros)"
+    }
+  }
+}

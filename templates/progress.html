@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processando Comparação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --primary-hover: #43a047;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .progress-container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .progress-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .progress-bar-container {
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            color: #757575;
+            font-size: 14px;
+        }
+
+        .progress-message {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 16px;
+            min-height: 24px;
+        }
+
+        .cancel-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .cancel-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .progress-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <h1 class="progress-title">Processando Arquivos</h1>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="progress-stats">
+            <div><span id="progress-percent">0%</span> concluído</div>
+            <div>Tempo estimado: <span id="time-remaining">calculando...</span></div>
+        </div>
+
+        <div class="progress-message" id="progress-message">Iniciando processamento...</div>
+
+        <div id="progress-spinner" class="progress-spinner"></div>
+
+        <button id="cancel-btn" class="cancel-btn">Cancelar</button>
+    </div>
+
+    <script>
+        // ID da comparação
+        const comparisonId = "{{ comparison_id }}";
+
+        // Elementos da interface
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercent = document.getElementById('progress-percent');
+        const timeRemaining = document.getElementById('time-remaining');
+        const progressMessage = document.getElementById('progress-message');
+        const progressSpinner = document.getElementById('progress-spinner');
+        const cancelBtn = document.getElementById('cancel-btn');
+
+        // Intervalos para verificação do progresso
+        let progressInterval;
+        let completionCheckCount = 0;
+
+        // Iniciar verificação de progresso
+        startProgressCheck();
+
+        // Função para iniciar a verificação de progresso
+        function startProgressCheck() {
+            // Verificar progresso imediatamente
+            checkProgress();
+
+            // Continuar verificando a cada 500ms
+            progressInterval = setInterval(checkProgress, 500);
+
+            // Botão de cancelamento
+            cancelBtn.addEventListener('click', cancelProcessing);
+        }
+
+        // Função para verificar o progresso atual
+        function checkProgress() {
+            fetch(`/check_progress/${comparisonId}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Atualizar barra de progresso
+                    progressBar.style.width = `${data.percent}%`;
+                    progressPercent.textContent = `${Math.round(data.percent)}%`;
+
+                    // Atualizar mensagem
+                    progressMessage.textContent = data.message;
+
+                    // Atualizar tempo restante
+                    timeRemaining.textContent = data.time_remaining;
+
+                    // Verificar se o processamento foi concluído
+                    if (data.status === 'concluido') {
+                        completionCheckCount++;
+                        // Esperar por algumas verificações consecutivas para confirmar conclusão
+                        // Isso evita condições de corrida com a atualização do progresso
+                        if (completionCheckCount >= 3) {
+                            clearInterval(progressInterval);
+                            redirectToResults();
+                        }
+                    } else {
+                        completionCheckCount = 0;
+
+                        // Mostrar spinner apenas se estiver em progresso
+                        if (data.status === 'em_progresso') {
+                            progressSpinner.style.display = 'block';
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao verificar progresso:', error);
+                    progressMessage.textContent = 'Erro ao verificar progresso';
+                });
+        }
+
+        // Função para redirecionar para a página de resultados
+        function redirectToResults() {
+            // Mostrar mensagem final
+            progressMessage.textContent = 'Análise concluída! Redirecionando...';
+            progressSpinner.style.display = 'none';
+            cancelBtn.classList.add('hidden');
+
+            // Redirecionar para resultados após um pequeno atraso
+            setTimeout(() => {
+                window.location.href = '/process_comparison';
+            }, 1000);
+        }
+
+        // Função para cancelar o processamento
+        function cancelProcessing() {
+            if (confirm('Deseja realmente cancelar a comparação?')) {
+                clearInterval(progressInterval);
+
+                // Fazer requisição para cancelar o processamento no servidor
+                fetch(`/cancel_comparison/${comparisonId}`, { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = '/';
+                        } else {
+                            alert('Não foi possível cancelar o processamento.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao cancelar:', error);
+                        alert('Erro ao cancelar o processamento.');
+                    });
+            }
+        }
+    </script>
+</body>
+</html>

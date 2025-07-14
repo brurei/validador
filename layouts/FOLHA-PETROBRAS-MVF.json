@@ -1,0 +1,113 @@
+{
+  "name": "Folha Petrobras MVF",
+  "description": "Layout para arquivo de folha Petrobras MVF (240 posições, sem header/trailer)",
+  "program": "P0810D3",
+  "record_size": 240,
+  "fields": {
+    "REG_SAI_ORPA": {
+      "pos_inicial": 1,
+      "tamanho": 3,
+      "description": "Financeira (orpa_cd_org_pag)"
+    },
+    "REG_SAI_ORLO": {
+      "pos_inicial": 4,
+      "tamanho": 3,
+      "description": "Órgão pessoal (orlo_cd_org_lot)"
+    },
+    "REG_SAI_MES": {
+      "pos_inicial": 7,
+      "tamanho": 2,
+      "description": "Mês referência"
+    },
+    "REG_SAI_FUNCAO": {
+      "pos_inicial": 9,
+      "tamanho": 5,
+      "description": "Função: fixo MOVFL"
+    },
+    "REG_SAI_ATDOR": {
+      "pos_inicial": 14,
+      "tamanho": 7,
+      "description": "Matrícula atualizador: fixo 7777777"
+    },
+    "REG_SAI_SEQ": {
+      "pos_inicial": 21,
+      "tamanho": 2,
+      "description": "Número sequencial: fixo 01"
+    },
+    "REG_SAI_MOV": {
+      "pos_inicial": 23,
+      "tamanho": 1,
+      "description": "Tipo movimento: gravar E ao invés de I"
+    },
+    "REG_SAI_PMATR": {
+      "pos_inicial": 24,
+      "tamanho": 7,
+      "description": "Matrícula do empregado"
+    },
+    "REG_SAI_INPA": {
+      "pos_inicial": 31,
+      "tamanho": 3,
+      "description": "Sequencial: 001 primeira vez, 004 demais ocorrências da rubrica"
+    },
+    "REG_SAI_COPA": {
+      "pos_inicial": 34,
+      "tamanho": 3,
+      "description": "Rubrica folha"
+    },
+    "REG_SAI_ORDEM": {
+      "pos_inicial": 37,
+      "tamanho": 2,
+      "description": "Ordem dos códigos"
+    },
+    "REG_SAI_SINAL": {
+      "pos_inicial": 39,
+      "tamanho": 1,
+      "description": "Sinal: P positivo, N negativo"
+    },
+    "REG_SAI_VALOR": {
+      "pos_inicial": 40,
+      "tamanho": 15,
+      "description": "Valor"
+    },
+    "REG_SAI_BASE_CALC": {
+      "pos_inicial": 55,
+      "tamanho": 15,
+      "description": "Base de cálculo: zeros"
+    },
+    "REG_SAI_QUANT": {
+      "pos_inicial": 70,
+      "tamanho": 5,
+      "description": "Número horas: branco (área de filler contém valor não usado)"
+    },
+    "REG_SAI_INIC_PAGTO": {
+      "pos_inicial": 75,
+      "tamanho": 8,
+      "description": "Data início pagamento: dia 01 do mês (ex: 01062023)"
+    },
+    "REG_SAI_TERM_PAGTO": {
+      "pos_inicial": 83,
+      "tamanho": 8,
+      "description": "Data término pagamento: dia 25 do mês (ex: 25062023)"
+    },
+    "REG_SAI_INIC_REFER": {
+      "pos_inicial": 91,
+      "tamanho": 8,
+      "description": "Data início referência: dia 01 do mês (ex: 01062023)"
+    },
+    "REG_SAI_TERM_REFER": {
+      "pos_inicial": 99,
+      "tamanho": 8,
+      "description": "Data término referência: dia 25 do mês (ex: 25062023)"
+    },
+    "WS_FILLER": {
+      "pos_inicial": 107,
+      "tamanho": 129,
+      "description": "Filler: branco"
+    },
+    "REG_SAI_LIBER": {
+      "pos_inicial": 236,
+      "tamanho": 5,
+      "description": "Fixo LIBER"
+    }
+  }
+}

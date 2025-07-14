@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Responsivo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="user-info">
+                <img src="{{ url_for('static', filename='image/img.png') }}" alt="User Icon" class="user-icon">
+                <div class="user-details">
+                    <h4>OM30 AI</h4>
+                    <p>Sua Assistente Virtual</p>
+                </div>
+            </div>
+            <div class="chat-actions">
+                <button>&#10094;</button>
+                <button>&#128222;</button>
+            </div>
+        </div>
+        <div class="chat-box" id="chat-box">
+            <!-- Mensagens serão adicionadas aqui -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="inputMessage" placeholder="Escreva uma mensagem...">
+            <button id="sendButton">&#10148;</button> <!-- Ícone de enviar -->
+        </div>
+    </div>
+
+    <script>
+        // Função para adicionar a mensagem ao chat e enviar para o backend
+        function enviarMensagem() {
+            const input = document.getElementById('inputMessage');
+            const message = input.value.trim();
+            if (message !== "") {
+                // Adiciona a mensagem ao chat (frontend)
+                adicionarMensagemAoChat(message, 'sent');
+
+                // Exibe a mensagem de "Processando..."
+                adicionarMensagemAoChat('Processando...', 'loading');
+
+                // Envia a mensagem ao backend para processamento (API da OpenAI)
+                fetch('/perguntar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        'pergunta': message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Remove a mensagem de "Processando..."
+                    removerMensagemDeProcessamento();
+
+                    // Verifica se a resposta contém uma imagem
+                    if (data.image) {
+                        // Adiciona a imagem ao chat
+                        adicionarImagemAoChat(data.resposta, data.image);
+                    } else {
+                        // Adiciona a resposta da API da OpenAI ao chat
+                        adicionarMensagemAoChat(data.resposta, 'received');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar mensagem:', error);
+                    removerMensagemDeProcessamento();
+                    adicionarMensagemAoChat('Erro ao enviar a mensagem. Tente novamente.', 'received');
+                });
+
+                input.value = ""; // Limpa o campo de entrada
+            }
+        }
+
+        // Função para adicionar mensagens ao chat (enviadas ou recebidas)
+        function adicionarMensagemAoChat(message, type) {
+            const chatBox = document.getElementById('chat-box');
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('message', type);
+            const messageContent = document.createElement('div');
+            messageContent.classList.add('message-content');
+            messageContent.textContent = message;
+            messageContainer.appendChild(messageContent);
+            chatBox.appendChild(messageContainer);
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll para o final do chat
+        }
+
+        // Função para adicionar uma imagem ao chat
+        function adicionarImagemAoChat(message, imageUrl) {
+            const chatBox = document.getElementById('chat-box');
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('message', 'received');
+
+            // Adiciona o texto antes da imagem (se houver)
+            if (message) {
+                const messageContent = document.createElement('div');
+                messageContent.classList.add('message-content');
+                messageContent.textContent = message;
+                messageContainer.appendChild(messageContent);
+            }
+
+            // Adiciona a imagem ao chat
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = 'Gráfico Gerado';
+            img.style.maxWidth = '100%';
+            img.style.marginTop = '10px';
+            messageContainer.appendChild(img);
+
+            chatBox.appendChild(messageContainer);
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll para o final do chat
+        }
+
+        // Função para remover a mensagem de "Processando..."
+        function removerMensagemDeProcessamento() {
+            const chatBox = document.getElementById('chat-box');
+            const loadingMessage = chatBox.querySelector('.message.loading');
+            if (loadingMessage) {
+                chatBox.removeChild(loadingMessage);
+            }
+        }
+
+        // Detectar clique no botão de envio
+        document.getElementById('sendButton').addEventListener('click', enviarMensagem);
+
+        // Detectar pressionamento da tecla Enter
+        document.getElementById('inputMessage').addEventListener('keypress', function(event) {
+            if (event.key === "Enter") {
+                enviarMensagem();
+            }
+        });
+    </script>
+</body>
+</html>

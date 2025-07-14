@@ -1,0 +1,117 @@
+{
+  "name": "Passivos Atuariais - Aposentados/Pensionistas",
+  "description": "Layout para arquivo de passivos atuariais - aposentados e pensionistas (formato posicional)",
+  "program": "PASSIVOS_ATUARIAIS_APOPEN",
+  "record_size": 350,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro",
+      "tipo_registro": null
+    },
+
+    "_APOPEN_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DE APOSENTADOS E PENSIONISTAS ---",
+      "tipo_registro": null
+    },
+    "MATRICULA": {
+      "pos_inicial": 1,
+      "tamanho": 12,
+      "description": "Matrícula do aposentado/pensionista",
+      "tipo_registro": "03"
+    },
+    "CPF": {
+      "pos_inicial": 13,
+      "tamanho": 11,
+      "description": "CPF do beneficiário",
+      "tipo_registro": "03"
+    },
+    "NOME": {
+      "pos_inicial": 24,
+      "tamanho": 50,
+      "description": "Nome do beneficiário",
+      "tipo_registro": "03"
+    },
+    "TIPO_BENEFICIO": {
+      "pos_inicial": 74,
+      "tamanho": 1,
+      "description": "Tipo: A=Aposentado, P=Pensionista",
+      "tipo_registro": "03"
+    },
+    "DATA_NASCIMENTO": {
+      "pos_inicial": 75,
+      "tamanho": 8,
+      "description": "Data nascimento DDMMAAAA",
+      "tipo_registro": "03"
+    },
+    "DATA_APOSENTADORIA": {
+      "pos_inicial": 83,
+      "tamanho": 8,
+      "description": "Data aposentadoria/pensão DDMMAAAA",
+      "tipo_registro": "03"
+    },
+    "SEXO": {
+      "pos_inicial": 91,
+      "tamanho": 1,
+      "description": "Sexo: M/F",
+      "tipo_registro": "03"
+    },
+    "VALOR_BENEFICIO": {
+      "pos_inicial": 92,
+      "tamanho": 15,
+      "description": "Valor mensal benefício (com 2 decimais)",
+      "tipo_registro": "03"
+    },
+    "PROVISAO_MATEMATICA": {
+      "pos_inicial": 107,
+      "tamanho": 18,
+      "description": "Provisão matemática (com 2 decimais)",
+      "tipo_registro": "03"
+    },
+    "EXPECTATIVA_VIDA": {
+      "pos_inicial": 125,
+      "tamanho": 8,
+      "description": "Expectativa vida em meses",
+      "tipo_registro": "03"
+    },
+    "VALOR_PRESENTE_BENEFICIOS": {
+      "pos_inicial": 133,
+      "tamanho": 18,
+      "description": "Valor presente benefícios futuros (com 2 decimais)",
+      "tipo_registro": "03"
+    },
+    "MATRICULA_INSTITUIDOR": {
+      "pos_inicial": 151,
+      "tamanho": 12,
+      "description": "Matrícula instituidor (para pensionistas)",
+      "tipo_registro": "03"
+    },
+    "NOME_INSTITUIDOR": {
+      "pos_inicial": 163,
+      "tamanho": 50,
+      "description": "Nome instituidor (para pensionistas)",
+      "tipo_registro": "03"
+    },
+    "CODIGO_PLANO": {
+      "pos_inicial": 213,
+      "tamanho": 10,
+      "description": "Código do plano",
+      "tipo_registro": "03"
+    },
+    "PERCENTUAL_PENSAO": {
+      "pos_inicial": 223,
+      "tamanho": 6,
+      "description": "Percentual pensão (para pensionistas)",
+      "tipo_registro": "03"
+    },
+    "FILLER": {
+      "pos_inicial": 229,
+      "tamanho": 122,
+      "description": "Filler: espaços",
+      "tipo_registro": "03"
+    }
+  }
+}

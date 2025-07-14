@@ -1,0 +1,155 @@
+{
+  "name": "Arquivo Retorno Folha Petros",
+  "description": "Layout para arquivo de retorno da Petros (200 posições)",
+  "program": "P0810W5",
+  "record_size": 200,
+  "fields": {
+    "TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 01=Header, 02=Detalhe, 09=Trailer",
+      "tipo_registro": null
+    },
+
+    "_HEADER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO HEADER (tipo 01) ---",
+      "tipo_registro": null
+    },
+    "HEA1_TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 01 (Header)",
+      "tipo_registro": "01"
+    },
+    "HEA1_FILLER1": {
+      "pos_inicial": 3,
+      "tamanho": 14,
+      "description": "Filler: Brancos",
+      "tipo_registro": "01"
+    },
+    "HEA1_MES_COMPETENCIA": {
+      "pos_inicial": 17,
+      "tamanho": 2,
+      "description": "Mês competência: MM",
+      "tipo_registro": "01"
+    },
+    "HEA1_ANO_COMPETENCIA": {
+      "pos_inicial": 19,
+      "tamanho": 4,
+      "description": "Ano competência: AAAA",
+      "tipo_registro": "01"
+    },
+    "HEA1_FILLER2": {
+      "pos_inicial": 23,
+      "tamanho": 178,
+      "description": "Filler: Brancos",
+      "tipo_registro": "01"
+    },
+
+    "_DETALHE_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO DETALHE (tipo 02) ---",
+      "tipo_registro": null
+    },
+    "DET1_TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 02 (Detalhe)",
+      "tipo_registro": "02"
+    },
+    "DET1_FILLER1": {
+      "pos_inicial": 3,
+      "tamanho": 2,
+      "description": "Filler: Brancos",
+      "tipo_registro": "02"
+    },
+    "DET1_NR_MATRIC_OR": {
+      "pos_inicial": 5,
+      "tamanho": 8,
+      "description": "Matrícula do aposentado na Petros",
+      "tipo_registro": "02"
+    },
+    "DET1_CD_PAGAMENTO": {
+      "pos_inicial": 13,
+      "tamanho": 4,
+      "description": "Rubrica folha petros",
+      "tipo_registro": "02"
+    },
+    "DET1_FILLER2": {
+      "pos_inicial": 17,
+      "tamanho": 4,
+      "description": "Filler: Brancos",
+      "tipo_registro": "02"
+    },
+    "DET1_VLR_LANCAMENTO": {
+      "pos_inicial": 21,
+      "tamanho": 15,
+      "description": "Valor lançamento: Valor das despesas do beneficiário",
+      "tipo_registro": "02"
+    },
+    "DET1_VL_MARG_PETROS": {
+      "pos_inicial": 36,
+      "tamanho": 15,
+      "description": "Valor margem Petros",
+      "tipo_registro": "02"
+    },
+    "DET1_VL_MARG_INSS": {
+      "pos_inicial": 51,
+      "tamanho": 15,
+      "description": "Valor margem INSS",
+      "tipo_registro": "02"
+    },
+    "DET1_NR_ORDEM": {
+      "pos_inicial": 66,
+      "tamanho": 4,
+      "description": "Número ordem",
+      "tipo_registro": "02"
+    },
+    "DET1_MOTIVO_REJEITA": {
+      "pos_inicial": 70,
+      "tamanho": 2,
+      "description": "Motivo rejeição folha petros",
+      "tipo_registro": "02"
+    },
+    "DET1_FILLER3": {
+      "pos_inicial": 72,
+      "tamanho": 129,
+      "description": "Filler: Brancos",
+      "tipo_registro": "02"
+    },
+
+    "_TRAILER_FIELDS": {
+      "pos_inicial": 999,
+      "tamanho": 0,
+      "description": "--- CAMPOS DO TRAILER (tipo 09) ---",
+      "tipo_registro": null
+    },
+    "TRA1_TIPO_REGISTRO": {
+      "pos_inicial": 1,
+      "tamanho": 2,
+      "description": "Tipo do registro: 09 (Trailer)",
+      "tipo_registro": "09"
+    },
+    "TRA1_FILLER1": {
+      "pos_inicial": 3,
+      "tamanho": 6,
+      "description": "Filler: Espaços",
+      "tipo_registro": "09"
+    },
+    "TRA1_QUANTIDADE_REG": {
+      "pos_inicial": 9,
+      "tamanho": 10,
+      "description": "Quantidade total de registros 02",
+      "tipo_registro": "09"
+    },
+    "TRA1_FILLER2": {
+      "pos_inicial": 19,
+      "tamanho": 182,
+      "description": "Filler: Espaços",
+      "tipo_registro": "09"
+    }
+  }
+}
