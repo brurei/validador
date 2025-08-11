@@ -1550,141 +1550,137 @@ def analisar_arquivo_estruturado(arquivo1_path, arquivo2_path, layout_info):
         # Usar uma estratégia mais eficiente para comparar linhas
         # Para arquivos grandes, comparamos linha a linha ao invés de usar difflib
         # que pode consumir muita memória
-        linhas_diferentes = []
-        for i in range(min_linhas):
-            if linhas1[i] != linhas2[i]:
-                linhas_diferentes.append(i)
+        # --- INÍCIO: NOVA LÓGICA SEM EFEITO CASCATA ---
+        from difflib import SequenceMatcher
 
-        # LIMITE para análise detalhada
+        matcher = SequenceMatcher(a=linhas1, b=linhas2, autojunk=False)
+        opcodes = matcher.get_opcodes()
+
         MAX_DETAILED_LINES = 500
-        if len(linhas_diferentes) > MAX_DETAILED_LINES:
-            print(
-                f"Muitas linhas diferentes ({len(linhas_diferentes)}). Limitando análise a {MAX_DETAILED_LINES} linhas.")
-            linhas_diferentes = linhas_diferentes[:MAX_DETAILED_LINES]
-            diferencas.append({
-                'linha': 0,
-                'tipo': 'info',
-                'mensagem': f'Análise limitada às primeiras {MAX_DETAILED_LINES} linhas diferentes por questões de desempenho.'
-            })
+        detalhadas = 0
 
-        # Processar apenas as linhas diferentes
-        for idx in linhas_diferentes:
-            linha1 = linhas1[idx].rstrip('\n')
-            linha2 = linhas2[idx].rstrip('\n')
+        def comparar_por_layout(idx1, idx2):
+            nonlocal detalhadas
+            if detalhadas >= MAX_DETAILED_LINES:
+                return
 
-            # Verificar o tipo de registro
+            linha1 = linhas1[idx1].rstrip('\n')
+            linha2 = linhas2[idx2].rstrip('\n')
+
             tipo_primo = linha1[0:2] if len(linha1) >= 2 else ""
-            print(f'Linha {idx + 1}: tipo_primo = "{tipo_primo}"')
 
-            # Se o layout não tem tipos específicos definidos (todos estão sob None)
-            # ou se é um registro de dados (tipo "01"), usar o layout completo
+            # Quando não há layout específico por tipo (ou é tipo "01"), compara campos
             if None in layout_por_tipo and (tipo_primo == "01" or not layout_por_tipo.get(tipo_primo)):
                 linha_diferencas = []
-
-                # Usar todos os campos do layout (que estão sob a chave None)
                 for campo, info in layout_por_tipo[None]:
-                    pos_inicial = info.get('pos_inicial', 1) - 1  # Ajustar para índice 0
+                    pos_inicial = info.get('pos_inicial', 1) - 1
                     tamanho = info.get('tamanho', 0)
-
-                    # Verificar se as posições estão dentro dos limites
                     if (pos_inicial + tamanho <= len(linha1) and
                             pos_inicial + tamanho <= len(linha2)):
-
-                        valor1 = linha1[pos_inicial:pos_inicial + tamanho].strip()
-                        valor2 = linha2[pos_inicial:pos_inicial + tamanho].strip()
-
-                        # Registrar apenas os campos com valores diferentes
-                        if valor1 != valor2:
+                        v1 = linha1[pos_inicial:pos_inicial + tamanho].strip()
+                        v2 = linha2[pos_inicial:pos_inicial + tamanho].strip()
+                        if v1 != v2:
                             linha_diferencas.append({
                                 'campo': campo,
-                                'descricao': info.get('description', ''),  # Note: 'description' não 'descricao'
-                                'valor_antigo': valor1,
-                                'valor_novo': valor2
+                                'descricao': info.get('description', ''),
+                                'valor_antigo': v1,
+                                'valor_novo': v2
                             })
-
-                # Adicionar às diferenças com campos específicos
                 if linha_diferencas:
-                    print(f'Encontradas {len(linha_diferencas)} diferenças de campo na linha {idx + 1}')
                     diferencas.append({
-                        'linha': idx + 1,
+                        'linha': idx1 + 1,  # numeração baseada no arquivo 1
                         'tipo': 'campos_alterados',
                         'diferenca': linha_diferencas
                     })
                 else:
-                    print(f'Nenhuma diferença de campo encontrada na linha {idx + 1}')
-                    # Se não identificamos campos específicos, mas a linha é diferente
                     diferencas.append({
-                        'linha': idx + 1,
-                        'tipo': 'linha_alterada',
-                        'valor_antigo': linha1,
-                        'valor_novo': linha2
-                    })
-
-                # Adicionar às diferenças com campos específicos ou como linha alterada
-                if linha_diferencas:
-                    diferencas.append({
-                        'linha': idx + 1,
-                        'tipo': 'campos_alterados',
-                        'diferenca': linha_diferencas
-                    })
-                else:
-                    # Se não identificamos campos específicos, mas a linha é diferente
-                    diferencas.append({
-                        'linha': idx + 1,
+                        'linha': idx1 + 1,
                         'tipo': 'linha_alterada',
                         'valor_antigo': linha1,
                         'valor_novo': linha2
                     })
             else:
-                # Linha sem tipo de registro reconhecido
+                # Sem layout específico por tipo → registra como linha alterada
                 diferencas.append({
-                    'linha': idx + 1,
+                    'linha': idx1 + 1,
                     'tipo': 'linha_alterada',
                     'valor_antigo': linha1,
                     'valor_novo': linha2
                 })
+            detalhadas += 1
+
+        for tag, i1, i2, j1, j2 in opcodes:
+            if detalhadas >= MAX_DETAILED_LINES:
+                diferencas.append({
+                    'linha': 0,
+                    'tipo': 'info',
+                    'mensagem': f'Análise limitada às primeiras {MAX_DETAILED_LINES} linhas diferentes por questões de desempenho.'
+                })
+                break
+
+            if tag == 'equal':
+                continue
+
+            elif tag == 'delete':
+                # Linhas presentes só no arquivo 1 (removidas)
+                for i in range(i1, i2):
+                    if detalhadas >= MAX_DETAILED_LINES: break
+                    diferencas.append({
+                        'linha': i + 1,
+                        'tipo': 'linha_removida',
+                        'valor_antigo': linhas1[i].rstrip('\n'),
+                        'valor_novo': ''
+                    })
+                    detalhadas += 1
+
+            elif tag == 'insert':
+                # Linhas presentes só no arquivo 2 (adicionadas)
+                for j in range(j1, j2):
+                    if detalhadas >= MAX_DETAILED_LINES: break
+                    diferencas.append({
+                        'linha': j + 1,  # pode usar a numeração do novo arquivo
+                        'tipo': 'linha_adicionada',
+                        'valor_antigo': '',
+                        'valor_novo': linhas2[j].rstrip('\n')
+                    })
+                    detalhadas += 1
+
+            elif tag == 'replace':
+                # 1) compara par-a-par onde há linhas em ambos os lados
+                common = min(i2 - i1, j2 - j1)
+                for k in range(common):
+                    comparar_por_layout(i1 + k, j1 + k)
+
+                # 2) sobras no arquivo 1 → removidas
+                for i in range(i1 + common, i2):
+                    if detalhadas >= MAX_DETAILED_LINES: break
+                    diferencas.append({
+                        'linha': i + 1,
+                        'tipo': 'linha_removida',
+                        'valor_antigo': linhas1[i].rstrip('\n'),
+                        'valor_novo': ''
+                    })
+                    detalhadas += 1
+
+                # 3) sobras no arquivo 2 → adicionadas
+                for j in range(j1 + common, j2):
+                    if detalhadas >= MAX_DETAILED_LINES: break
+                    diferencas.append({
+                        'linha': j + 1,
+                        'tipo': 'linha_adicionada',
+                        'valor_antigo': '',
+                        'valor_novo': linhas2[j].rstrip('\n')
+                    })
+                    detalhadas += 1
+        # --- FIM: NOVA LÓGICA ---
+
 
         # Adicionar linhas exclusivas de cada arquivo
         # Limitar análise também por desempenho
         MAX_DISTINCT_LINES = 100
 
         # Linhas exclusivas do arquivo 1
-        count_removed = 0
-        for i in range(min_linhas, len(linhas1)):
-            if count_removed >= MAX_DISTINCT_LINES:
-                diferencas.append({
-                    'linha': i,
-                    'tipo': 'info',
-                    'mensagem': f'Mais de {MAX_DISTINCT_LINES} linhas exclusivas do arquivo 1 não foram detalhadas.'
-                })
-                break
 
-            diferencas.append({
-                'linha': i + 1,
-                'tipo': 'linha_removida',
-                'valor_antigo': linhas1[i].rstrip('\n'),
-                'valor_novo': ''
-            })
-            count_removed += 1
-
-        # Linhas exclusivas do arquivo 2
-        count_added = 0
-        for i in range(min_linhas, len(linhas2)):
-            if count_added >= MAX_DISTINCT_LINES:
-                diferencas.append({
-                    'linha': i,
-                    'tipo': 'info',
-                    'mensagem': f'Mais de {MAX_DISTINCT_LINES} linhas exclusivas do arquivo 2 não foram detalhadas.'
-                })
-                break
-
-            diferencas.append({
-                'linha': i + 1,
-                'tipo': 'linha_adicionada',
-                'valor_antigo': '',
-                'valor_novo': linhas2[i].rstrip('\n')
-            })
-            count_added += 1
 
         return diferencas
 
