@@ -65,7 +65,10 @@ def login():
         if username in USERS and USERS[username] == password_hash:
             session['logged_in'] = True
             session['username'] = username
-            return redirect(next_url)
+            if next_url == '/':
+                return redirect('/info')
+            else:
+                return redirect(next_url)
         else:
             error = 'Credenciais inválidas. Por favor, tente novamente.'
 
@@ -1187,17 +1190,6 @@ def detect_by_filename(filename: str, layouts_cache: Dict) -> Optional[Tuple[str
             r'.*mvf.*\.txt',
             r'.*p0810d3.*\.txt'
         ],
-        'RETORNO-FOLHA-PETROBRAS': [
-            r'.*hr1028.*\.txt',
-            r'.*ar3pb.*\.txt',
-            r'.*retorno.*folha.*\.txt'
-        ],
-        # ADICIONAR ESTAS DUAS LINHAS:
-        'ENVIO_FOLHA_PETROS': [
-            r'.*envio.*petros.*\.txt',
-            r'.*p0810w4.*\.txt',
-            r'.*folha.*petros.*envio.*\.txt'
-        ],
         'RETORNO_FOLHA_PETROS': [
             r'.*retorno.*petros.*\.txt',
             r'.*p0810w5.*\.txt',
@@ -1304,11 +1296,7 @@ def detect_by_content_analysis(lines: List[str], layouts_cache: Dict) -> Optiona
                 if has_empresa_019090:
                     return 'ENVIO_FOLHA_PETROS', layouts_cache.get('ENVIO_FOLHA_PETROS')
                 else:
-                    # Verificar se é retorno - tem códigos de rejeição ou valores de margem
-                    has_rejection_codes = any(re.search(r'02.{67,69}\d{2}', line) for line in lines)
-                    if has_rejection_codes:
-                        return 'RETORNO_FOLHA_PETROS', layouts_cache.get('RETORNO_FOLHA_PETROS')
-                    else:
+
                         # Padrão: assumir envio se não identificou claramente como retorno
                         return 'ENVIO_FOLHA_PETROS', layouts_cache.get('ENVIO_FOLHA_PETROS')
 
@@ -2858,14 +2846,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
                     </div>
                 </form>
 
-                <!-- Histórico de comparações recentes -->
-                <div class="recent-comparison">
-                    <h3>Comparações Recentes</h3>
-                    <div class="comparison-list" id="recent-comparisons-list">
-                        <!-- Os itens serão inseridos via JavaScript -->
-                    </div>
-                </div>
-            </div>
+                
 
             <!-- Modo Lote -->
             <div class="tab-content" id="batch-tab">
@@ -2929,7 +2910,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
         </span>
     </label>
     <select id="batch-layout" name="layout_name" class="validation-method">
-        <option value="">Autodetectar layout</option>
+        <option value=""></option>
         <!-- Opções de layout serão inseridas dinamicamente pelo Python -->
     </select>
 </div>
@@ -3017,13 +2998,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
                     </div>
                 </form>
 
-                <!-- Histórico de comparações recentes em lote -->
-                <div class="recent-comparison">
-                    <h3>Comparações em Lote Recentes</h3>
-                    <div class="comparison-list" id="recent-batch-comparisons-list">
-                        <!-- Os itens serão inseridos via JavaScript -->
-                    </div>
-                </div>
+              
             </div>
         </div>
     </div>
@@ -3378,71 +3353,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
                 });
             }
 
-            // Armazenar e exibir histórico de comparações
-            function loadComparisonHistory() {
-                const individualHistory = JSON.parse(localStorage.getItem('individualComparisons') || '[]');
-                const batchHistory = JSON.parse(localStorage.getItem('batchComparisons') || '[]');
-
-                displayHistory(individualHistory, 'recent-comparisons-list');
-                displayHistory(batchHistory, 'recent-batch-comparisons-list');
-            }
-
-            function displayHistory(history, containerId) {
-                const container = document.getElementById(containerId);
-                container.innerHTML = '';
-
-                if (history.length === 0) {
-                    container.innerHTML = '<div class="comparison-item">Nenhuma comparação recente</div>';
-                    return;
-                }
-
-                // Mostrar apenas as 5 comparações mais recentes
-                const recentHistory = history.slice(0, 5);
-
-                recentHistory.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'comparison-item';
-
-                    let files = '';
-                    if (item.type === 'individual') {
-                        files = `${item.file1} <i class="fas fa-exchange-alt"></i> ${item.file2}`;
-                    } else {
-                        files = `${item.source1} <i class="fas fa-exchange-alt"></i> ${item.source2}`;
-                    }
-
-                    const statusClass = item.result === 'identical' ? 'identical' : 'different';
-                    const statusText = item.result === 'identical' ? 'Idêntico' : 'Diferente';
-
-                    itemDiv.innerHTML = `
-                        <div class="comparison-files">${files}</div>
-                        <div class="comparison-status ${statusClass}">${statusText}</div>
-                        <div class="comparison-timestamp">${formatTimestamp(item.timestamp)}</div>
-                    `;
-
-                    // Adicionar funcionalidade para recarregar a comparação
-                    itemDiv.addEventListener('click', function() {
-                        reloadComparison(item);
-                    });
-
-                    container.appendChild(itemDiv);
-                });
-            }
-
-            function formatTimestamp(timestamp) {
-                const date = new Date(timestamp);
-                return date.toLocaleString();
-            }
-
-            function reloadComparison(item) {
-                // Aqui você pode implementar a lógica para recarregar uma comparação anterior
-                // Por exemplo, redirecionar para a página de resultados ou preencher os campos com os valores da comparação
-                alert(`Recarregando comparação: ${item.type === 'individual' ? 
-                    item.file1 + ' e ' + item.file2 : 
-                    item.source1 + ' e ' + item.source2}`);
-            }
-
-            // Carregar histórico ao iniciar
-            loadComparisonHistory();
+            
 
             // Adicionar evento de submit para o formulário com efeito de loading
             document.getElementById('individual-form').addEventListener('submit', showLoading);
@@ -4051,71 +3962,7 @@ BATCH_RESULT_HTML_TEMPLATE = """<!DOCTYPE html>
         {filter_info}
 
         <!-- Controles para alternar entre visualizações -->
-        <div class="view-controls">
-            <button class="view-button active" onclick="switchView('technical')">Visão Técnica</button>
-            <button class="view-button" onclick="switchView('business')">Visão Negocial</button>
-        </div>
-
-        <!-- Visualização Técnica -->
-        <div id="technical-view" class="view-content active">
-            <div class="stats-container">
-                <div class="stats-item">
-                    <span class="stats-highlighted">{total_files}</span>
-                    <span class="stats-label">Total de arquivos</span>
-                </div>
-                <div class="stats-item">
-                    <span class="stats-highlighted">{identical_files}</span>
-                    <span class="stats-label">Arquivos idênticos</span>
-                </div>
-                <div class="stats-item">
-                    <span class="stats-warning">{different_files}</span>
-                    <span class="stats-label">Arquivos diferentes</span>
-                </div>
-                <div class="stats-item">
-                    <span class="stats-highlighted">{only_in_source1}</span>
-                    <span class="stats-label">Apenas na Fonte 1</span>
-                </div>
-                <div class="stats-item">
-                    <span class="stats-highlighted">{only_in_source2}</span>
-                    <span class="stats-label">Apenas na Fonte 2</span>
-                </div>
-            </div>
-
-            <div class="controls-container">
-                <div class="filter-container">
-                    <label for="filter-status">Filtrar por status:</label>
-                    <select id="filter-status" onchange="filterTable()">
-                        <option value="all">Todos</option>
-                        <option value="identical">Idênticos</option>
-                        <option value="different">Diferentes</option>
-                        <option value="missing">Arquivos Ausentes</option>
-                    </select>
-                    <input type="text" id="search-box" class="search-box" placeholder="Pesquisar arquivo..." onkeyup="filterTable()">
-                </div>
-
-                <div class="export-container">
-                    {export_options}
-                </div>
-            </div>
-
-            <table id="results-table">
-                <thead>
-                    <tr>
-                        <th>Arquivo</th>
-                        <th>Status</th>
-                        <th>Modificado (Fonte 1)</th>
-                        <th>Modificado (Fonte 2)</th>
-                        <th>Tamanho (Fonte 1)</th>
-                        <th>Tamanho (Fonte 2)</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {table_rows}
-                </tbody>
-            </table>
-        </div>
-
+      
         <!-- Visualização para Negócios -->
         <div id="business-view" class="view-content">
             <div class="business-summary">
@@ -4155,10 +4002,10 @@ BATCH_RESULT_HTML_TEMPLATE = """<!DOCTYPE html>
                 <h2 id="modal-title">Detalhes da Validação</h2>
 
                 <!-- Controles para alternar entre visualizações no modal -->
-                <div class="view-controls">
-                    <button class="view-button active" onclick="switchModalView('technical')">Visão Técnica</button>
-                    <button class="view-button" onclick="switchModalView('business')">Visão Negocial</button>
-                </div>
+               <!-- Controles para alternar entre visualizações -->
+<div class="view-controls">
+    <button class="view-button active" onclick="switchView('business')">Visão Negocial</button>
+</div>
 
                 <div id="file-info-section" class="file-info-section">
                     <!-- Informações do arquivo serão inseridas aqui -->
@@ -4195,7 +4042,7 @@ BATCH_RESULT_HTML_TEMPLATE = """<!DOCTYPE html>
                 </div>
 
                 <!-- Visualização de Negócio no Modal -->
-                <div id="modal-business-view" class="view-content">
+                <div id="modal-business-view" class="view-content active">
                     <!-- O conteúdo da visualização de negócio será inserido via JavaScript -->
                 </div>
             </div>
@@ -5163,42 +5010,11 @@ RESULT_HTML_TEMPLATE = """<!DOCTYPE html>
 
         <!-- Controles para alternar entre visualizações -->
         <div class="view-controls">
-            <button class="view-button active" onclick="switchView('technical')">Visão Técnica</button>
-            <button class="view-button" onclick="switchView('business')">Visão Negocial</button>
         </div>
 
-        <!-- Visualização Técnica -->
-        <div id="technical-view" class="view-content active">
-            <div class="diff-controls">
-                <div>
-                    <button type="button" class="diff-view-btn active" id="unified-view-btn" onclick="switchDiffView('unified')">Visão Unificada</button>
-                    <button type="button" class="diff-view-btn" id="split-view-btn" onclick="switchDiffView('split')">Visão Lado a Lado</button>
-                </div>
-                <div>
-                    <label for="show-unchanged"><input type="checkbox" id="show-unchanged" checked onchange="toggleUnchanged()"> Mostrar linhas não alteradas</label>
-                </div>
-            </div>
-
-            <div id="unified-diff-view">
-                {differences_html}
-            </div>
-
-            <div id="split-diff-view" style="display: none;">
-                <div class="advanced-diff-container">
-                    <div class="file-column file1-column">
-                        <h3>{file1}</h3>
-                        <div id="file1-content"></div>
-                    </div>
-                    <div class="file-column file2-column">
-                        <h3>{file2}</h3>
-                        <div id="file2-content"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+      
         <!-- Visualização para Negócios -->
-        <div id="business-view" class="view-content">
+        <div id="business-view" class="view-content active">
             {business_view_html}
         </div>
 
@@ -6674,6 +6490,84 @@ def upload_files():
     return result_html
 
 
+@app.route('/info', methods=['GET'])
+@login_required
+def show_info():
+    info_template = """<!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Informações Importantes</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f9f9f9;
+                color: #333;
+                line-height: 1.6;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+            .info-container {
+                max-width: 600px;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                padding: 30px;
+                text-align: center;
+            }
+            .info-header {
+                background-color: #4CAF50;
+                color: white;
+                padding: 15px;
+                border-radius: 8px 8px 0 0;
+                margin: -30px -30px 20px -30px;
+            }
+            .info-item {
+                background-color: #f8f9fa;
+                padding: 15px;
+                margin: 15px 0;
+                border-radius: 6px;
+                border-left: 4px solid #4CAF50;
+            }
+            .button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                text-decoration: none;
+                display: inline-block;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="info-container">
+            <div class="info-header">
+                <h2>Informações Importantes</h2>
+            </div>
+
+            <div class="info-item">
+                <h3>🔍 Verificação Individual</h3>
+                <p>Os arquivos <strong>devem ter nomes diferentes</strong> para comparação individual.</p>
+            </div>
+
+            <div class="info-item">
+                <h3>📦 Verificação em Lote</h3>
+                <p>Os nomes dos arquivos das <strong>duas origens deverão ser iguais</strong> para comparação em lote.</p>
+            </div>
+
+            <a href="/" class="button">Continuar para o Validador</a>
+        </div>
+    </body>
+    </html>"""
+
+    return info_template
 # MÉTODO 2: NOVA FUNÇÃO compare_files_content_with_layout
 def compare_files_content_with_layout(file1_path, file2_path, layout, context_lines=3):
     """
@@ -7073,11 +6967,14 @@ def get_available_layouts():
                     # Torna o nome mais amigável para exibição
                     display_name = layout_name.replace('_', ' ').title()
                     layouts.append((layout_name, display_name))
+
+        # ADICIONE esta linha para ordenar:
+        layouts.sort(key=lambda x: x[1])  # Ordena pelo display_name
+
         return layouts
     except Exception as e:
         print(f"Erro ao obter layouts: {str(e)}")
         return []
-
 
 @app.route('/upload-layout-automatico', methods=['POST'])
 @login_required
