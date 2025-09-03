@@ -2845,7 +2845,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
                         </button>
                     </div>
                 </form>
-
+ </div>
                 
 
             <!-- Modo Lote -->
